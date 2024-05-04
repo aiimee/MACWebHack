@@ -25,7 +25,7 @@ const CharacterSheet = ({ character, experiencePoints, currentLevel, onExperienc
     },
     'character2': {
       egg: { spriteSheet: char2Egg, frames: 16, animationInterval: 1400 },
-      baby: { spriteSheet: char2Baby, frames: 16, animationInterval: 800 },
+      baby: { spriteSheet: char2Baby, frames: 16, animationInterval: 1400 },
       kid: { spriteSheet: char2Child, frames: 16, animationInterval: 700 },
       adult: { spriteSheet: char2Adult, frames: 16, animationInterval: 600 }
     },
