@@ -1,5 +1,5 @@
-import React from "react";
-function Footer() {
+import React from 'react'
+function Footer () {
   return (
     <footer className="fixed bottom-0 left-0 w-full bg-black text-white">
       <div className="flex flex-col justify-center items-center text-center pt-2 pb-4 text-white text-sm">
@@ -7,7 +7,7 @@ function Footer() {
         <span>© 2024 TaskaGotchi. All rights reserved.</span>
       </div>
     </footer>
-  );
+  )
 }
 
 export default Footer;
