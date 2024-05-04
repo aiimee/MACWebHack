@@ -81,7 +81,7 @@ const HomePage = () => {
           </div>
         </div>
         {/* Fifth section  */}
-        <div className="bg-[#FAF4E6] flex-grow w-full text-black flex justify-center">
+        <div className="bg-[#FAF4E6] flex-grow w-full text-black flex justify-center mb-10">
           <div className="max-w-screen-lg flex items-center">
             <img
               alt="character with book"
