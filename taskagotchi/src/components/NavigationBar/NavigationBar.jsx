@@ -4,8 +4,8 @@ import egg from "../../assets/images/egg.png";
 
 const NavigationBar = () => {
   return (
-    <div className="w-full sticky top-0 left-0 border-b-8 border-gray-800">
-      <div className="flex items-center justify-between bg-[#FAF4E6] py-4 md:px-10 px-7">
+    <div className='w-full sticky top-0 left-0 border-b-8 border-gray-800'>
+      <div className='flex items-center justify-between bg-[#FAF4E6] py-4 md:px-10 px-7'>
         <div
           className="font-bold text-3xl cursor-pointer text-gray-800"
           style={{ imageRendering: "pixelated" }}
@@ -21,16 +21,15 @@ const NavigationBar = () => {
             </Link>
           </span>
         </div>
-        <div className="text-2xl underline cursor-pointer text-gray-800">
-          <Link className="text-gray-800" to="/tasks">
-            Tasks
+        <div className='text-2 underline cursor-pointer text-gray-800 justify-center font-bold'>
+          {/* TODO: Connect this to the page */}
+          <Link className='text-gray-800' to='/'>
+            About Us
           </Link>
         </div>
-        <div className="text-2xl cursor-pointer text-gray-800">
-          <Link
-            to="/login"
-            className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100"
-          >
+        <div className='text-2 cursor-pointer text-gray-800'>
+          {/* TODO: Connect this to the page */}
+          <button className='border-2 border-[#45473F] text-black py-2 px-4 rounded-lg shadow-custom opacity-100 hover:bg-orange-600'>
             Login/Sign Up
           </Link>
         </div>
