@@ -23,7 +23,7 @@ const AddTaskPopup = ({ onClose, onTaskAdded }) => {
     }
 
     // generate score
-    const taskScore = Math.min(10 + Math.floor(description.length / 10), 15)
+    const taskScore = Math.min(20 + Math.floor(description.length / 10), 40)
 
     // temp new task
     const newTask = {

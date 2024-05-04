@@ -42,6 +42,11 @@ const TaskLine = ({ task, onTaskAdded }) => {
       const updatedTasks = currentUser.tasks.map((t) =>
         t.id === task.id ? { ...t, completed: true } : t
       )
+
+      // adding the score to reward points
+      const taskScore = task.score;
+      currentUser.rewardPoints = currentUser.rewardPoints + taskScore;
+
       currentUser.tasks = updatedTasks
       const updatedUsers = users.map((user) =>
         user.id === currentUser.id ? currentUser : user
@@ -144,7 +149,7 @@ const TaskLine = ({ task, onTaskAdded }) => {
         className='task-checkbox'
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        onClick={handleBoxClick}
+        onClick={task.completed ? undefined : handleBoxClick}
       >
         {(isHovered || task.completed) && <span>&#10003;</span>}
       </div>
