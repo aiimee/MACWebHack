@@ -7,21 +7,24 @@ import Footer from '../components/Footer/Footer'
 import TaskPage from '../pages/TaskPage/TaskPage'
 import NavigationBar from '../components/NavigationBar/NavigationBar'
 
-function App () {
+function App() {
   return (
     <div className='App flex flex-col min-h-screen'>
       <Router>
         <NavigationBar />
-        <Routes>
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/signup' element={<SignupPage />} />
-          <Route path='/tasks' element={<TaskPage />} />
-          <Route path='/' element={<HomePage />} />
-        </Routes>
+        <div className="flex-grow">
+          <Routes>
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/signup' element={<SignupPage />} />
+            <Route path='/tasks' element={<TaskPage />} />
+            <Route path='/' element={<HomePage />} />
+          </Routes>
+        </div>
         <Footer />
       </Router>
     </div>
   )
 }
+
 
 export default App

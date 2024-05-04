@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'; // Add useEffect import here
 import LevelBar from '../../components/LevelBar/LevelBar';
 import Done from '../../components/TasksTab/Done/Done';
-import Pet from '../../components/TasksTab/Pet/Pet';
 import ToDo from '../../components/TasksTab/ToDo/ToDo';
 import LateTask from '../../components/TasksTab/LateTask/LateTask';
 import CharacterSheet from '../../components/VirtualPet/Characters/Character1';
