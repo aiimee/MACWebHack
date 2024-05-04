@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const HomePage = () => {
-  return <h1 className='text-3xl font-bold '>OMG HOME PAGE</h1>
-}
+  return (
+    <div className="bg-[#FAF4E6]">
+      <h1>OMG HOME PAGFE</h1>
+    </div>
+  );
+};
 
-export default HomePage
+export default HomePage;
