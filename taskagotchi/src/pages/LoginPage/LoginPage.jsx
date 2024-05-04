@@ -1,34 +1,34 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import img from '../../assets/images/loginPic.png';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import img from '../../assets/images/loginPic.png'
 
 const LoginPage = () => {
-  const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const navigate = useNavigate()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
 
   const handleLogin = () => {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const user = users.find(user => user.email === email && user.password === password);
+    const users = JSON.parse(localStorage.getItem('users')) || []
+    const user = users.find(user => user.email === email && user.password === password)
 
     if (user) {
-      localStorage.setItem('loggedInUser', JSON.stringify(user));
-      setErrorMessage('');
-      setSuccessMessage('Login successful!');
+      localStorage.setItem('loggedInUser', JSON.stringify(user))
+      setErrorMessage('')
+      setSuccessMessage('Login successful!')
       setTimeout(() => {
-        navigate('/');
-      }, 2000);
+        navigate('/')
+      }, 2000)
     } else {
-      setSuccessMessage('');
-      setErrorMessage('Invalid email or password');
+      setSuccessMessage('')
+      setErrorMessage('Invalid email or password')
     }
-  };
+  }
 
   const handleSignupClick = () => {
-    navigate('/signup');
-  };
+    navigate('/signup')
+  }
 
   return (
     <div className='flex justify-center items-center m-24'>
@@ -38,8 +38,8 @@ const LoginPage = () => {
           <img
             src={img}
             alt='sunset'
-            className='max-w-xs md:max-w-sm lg:max-w-md rounded-xl object-cover'  
-            style={{ flexShrink: 0 }}  
+            className='max-w-xs md:max-w-sm lg:max-w-md rounded-xl object-cover'
+            style={{ flexShrink: 0 }}
           />
         </div>
         <div className='flex-1 flex flex-col justify-start p-8 space-y-2'>
@@ -82,12 +82,7 @@ const LoginPage = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LoginPage;
-
-
-
-
-
+export default LoginPage
