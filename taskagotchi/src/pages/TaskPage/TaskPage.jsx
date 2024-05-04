@@ -7,8 +7,6 @@ import Character from '../../components/VirtualPet/Character'
 const TaskPage = () => {
   return (
     <>
-      <NavigationBar />
-
       <div class='container'>
         <div class='row'>
 

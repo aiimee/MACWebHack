@@ -10,8 +10,8 @@ const Character = () => {
     const animationInterval = 6000;
 
     return (
-        <div className="flex flex-col items-center justify-center my-5">
-            <h3 className="text-lg font-bold mb-4">My Animated Character</h3>
+        <div className="flex flex-col items-center justify-center my-5 p-4 bg-green-200 rounded-lg shadow-lg">
+            <h3 className="text-lg font-bold text-green-800 mb-4">My Animated Character</h3>
             <SpriteAnimator
                 spriteSheet={spriteSheet}
                 frameWidth={frameWidth}
@@ -24,4 +24,5 @@ const Character = () => {
 };
 
 export default Character;
+
 

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import img from '../../assets/images/activities.jpeg'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import { isValidEmail, isStrongPassword, isVaidPhonenumber } from '../../utils/validationUtils'
 import './SignUpPage.css'
 

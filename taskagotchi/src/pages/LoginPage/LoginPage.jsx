@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import img from '../../assets/images/browse.png'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 import './LoginPage.css'
 

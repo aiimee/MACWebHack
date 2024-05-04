@@ -3,6 +3,7 @@ import './SpriteAnimator.css'
 
 const SpriteAnimator = ({ spriteSheet, frameWidth, frameHeight, frameCount, animationInterval }) => {
     const [currentFrame, setCurrentFrame] = useState(0);
+    const scale = 10; 
 
     useEffect(() => {
         const updateFrame = () => {
@@ -16,14 +17,15 @@ const SpriteAnimator = ({ spriteSheet, frameWidth, frameHeight, frameCount, anim
 
     return (
         <div
-            className="inline-block overflow-hidden image-pixelated"
+            className="inline-block overflow-hidden"
             style={{
-                width: `${frameWidth}px`,
-                height: `${frameHeight}px`,
+                width: `${frameWidth * scale}px`,
+                height: `${frameHeight * scale}px`,
                 backgroundImage: `url(${spriteSheet})`,
                 backgroundRepeat: 'no-repeat',
-                backgroundPosition: `-${currentFrame * frameWidth}px 0px`,
-                transform: `scale(10)` 
+                backgroundPosition: `-${currentFrame * frameWidth * scale}px 0px`,  // Adjusted to consider scale
+                backgroundSize: `${frameWidth * frameCount * scale}px ${frameHeight * scale}px`,
+                imageRendering: 'pixelated'
             }}
         />
     );
