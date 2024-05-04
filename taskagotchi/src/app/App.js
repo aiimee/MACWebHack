@@ -8,22 +8,21 @@ import ProfilePage from '../pages/ProfilePage/ProfilePage'
 import Footer from '../components/Footer/Footer'
 import TaskPage from '../pages/TaskPage/TaskPage'
 
-
-function App() {
+function App () {
   return (
-    <div className="App content">
+    <div className='App content'>
       {/* <ProductsRepo />
       <CartProvider> */}
-        <Router>
-          <Routes>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/tasks" element={<TaskPage />} />
-            {/* <Route path="/" element={<HomePage />} /> */}
-          </Routes>
-          <Footer />
-        </Router>
+      <Router>
+        <Routes>
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/signup' element={<SignupPage />} />
+          <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/tasks' element={<TaskPage />} />
+          {/* <Route path="/" element={<HomePage />} /> */}
+        </Routes>
+        <Footer />
+      </Router>
       {/* </CartProvider> */}
     </div>
   )

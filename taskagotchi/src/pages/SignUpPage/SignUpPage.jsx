@@ -64,7 +64,7 @@ const SignUpPage = () => {
       tasks: [],
       rewardPoints: 0,
       dateJoined: new Date().toISOString()
-    };
+    }
 
     users.push(newUser)
     localStorage.setItem('users', JSON.stringify(users))

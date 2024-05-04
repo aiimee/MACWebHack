@@ -1,0 +1,4 @@
+/* Global makes pixel art not blurry during enlargement */
+.image-pixelated {
+  image-rendering: pixelated;
+}

@@ -64,7 +64,7 @@ const NavigationBar = () => {
   }, [])
   const navigateToMealPlanner = () => {
     navigate('/diet-planner')
-    window.location.reload();
+    window.location.reload()
   }
 
   // Refactor to make it responsive
