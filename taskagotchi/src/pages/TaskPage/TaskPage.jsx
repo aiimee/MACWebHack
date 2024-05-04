@@ -60,6 +60,7 @@ const TaskPage = () => {
                 onExperienceChange={setExperience}
                 onLevelChange={setLevel}
               />
+
             </div>
             <div
               className='flex flex-col items-center justify-center my-5 bg-[#B0B0A6] rounded-lg shadow-pet border-4 border-[#45473F]'
