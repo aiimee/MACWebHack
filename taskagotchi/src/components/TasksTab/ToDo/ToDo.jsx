@@ -31,11 +31,10 @@ const ToDo = () => {
 
   return (
     <>
-      <div className="mt-4">
-        <div className="p-4">
+      <div className="bg-transparent border-black rounded-xl p-4 mb-10 border-2">
           {/* ADD BUTTON */}
           <button
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full flex items-center justify-center mb-4"
+            className="bg-[#A8FF93] hover:bg-[#8FE67E] text-black font-bold py-0 px-2 border-2 border-black rounded-lg flex items-center justify-center mb-4 ml-auto mr-2"
             onClick={handleOpenAddTaskPopUp}
           >
             <svg
@@ -66,9 +65,7 @@ const ToDo = () => {
               <TaskLine key={task.id} task={task} onTaskAdded={handleTaskSaved}/>
             ))}
           </div>
-
         </div>
-      </div>
     </>
   );
 };

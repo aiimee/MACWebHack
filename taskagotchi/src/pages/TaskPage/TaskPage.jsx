@@ -16,20 +16,20 @@ const TaskPage = () => {
         {/* LEFT-HAND SECTION */}
         <div className="md:w-1/2 p-4">
           {/* UPCOMING TASKS */}
-          <div className="bg-white shadow rounded p-4 mb-4">
-            <h2 className="text-xl font-bold mb-2">LATE</h2>
+          <div>
+            <h2 className="text-4xl font-bold mb-1 ">LATE</h2>
             <LateTask />
           </div>
 
           {/* TODO TASKS */}
-          <div className="bg-white shadow rounded p-4 mb-4">
-            <h2 className="text-xl font-bold mb-2">To-Do</h2>
+          <div>
+            <h2 className="text-4xl font-bold mb-1">To-Do</h2>
             <ToDo />
           </div>
 
           {/* DONE */}
-          <div className="bg-white shadow rounded p-4">
-            <h2 className="text-xl font-bold mb-2">Done</h2>
+          <div>
+            <h2 className="text-4xl font-bold mb-1">Done</h2>
             <Done />
           </div>
 

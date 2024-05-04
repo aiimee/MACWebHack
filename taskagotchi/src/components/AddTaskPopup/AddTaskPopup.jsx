@@ -9,6 +9,7 @@ const AddTaskPopup = ({ onClose, onTaskAdded }) => {
   const [errorMessage, setErrorMessage] = useState('')
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
+  const [reward, setReward] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -34,7 +35,8 @@ const AddTaskPopup = ({ onClose, onTaskAdded }) => {
       score: taskScore,
       completed: false,
       startDate,
-      endDate
+      endDate,
+      reward,
     }
 
     // store in local storage
@@ -75,90 +77,137 @@ const AddTaskPopup = ({ onClose, onTaskAdded }) => {
   }
 
   return (
-    <div className='popup-overlay'>
-      <div className='row border rounded-5 p-3 bg-white shadow box-area'>
-        <h2>Add Task</h2>
+    <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-60'>
+      <div className="bg-[#FAF4E6] rounded-lg shadow-lg p-6 w-96 border-2 border-black rounded-xl">
+        <div className="flex justify-between items-center mb-4 ">
+          <h2 className="text-2xl font-semibold">Add Task</h2>
+          <button
+            type="button"
+            className="bg-[#F27C7C] hover:bg-[#F06565] focus:outline-none text-black font-bold py-0 px-2 border-2 border-black rounded-lg"
+            onClick={onClose}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
         {successMessage && <div className='alert alert-success'>{successMessage}</div>}
         {errorMessage && <div className='alert alert-danger'>{errorMessage}</div>}
-        <form onSubmit={handleSubmit}>
+        <form>
 
-          {/* Title */}
-          <div className='form-group'>
-            <label htmlFor='taskTitle'>Title</label>
+          {/* Render form fields for editing task details */}
+          <div className="mb-4 ">
+            <label htmlFor="title" className="block text-gray-700 font-semibold mb-2 ">
+              Title:
+            </label>
             <input
-              type='text'
-              className='form-control'
-              id='taskTitle'
+              type="text"
+              id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              maxLength={50}
               required
-            />
-          </div>
-
-          {/* Start date */}
-          <div className='form-group'>
-            <label htmlFor='startDate'>Start Date</label>
-            <input
-              type='date'
-              className='form-control'
-              id='startDate'
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-              required
-            />
-          </div>
-
-          {/* End date */}
-          <div className='form-group'>
-            <label htmlFor='endDate'>End Date</label>
-            <input
-              type='date'
-              className='form-control'
-              id='endDate'
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-              required
+              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg"
             />
           </div>
 
           {/* Description */}
-          <div className='form-group'>
-            <label htmlFor='taskDescription'>Description</label>
+          <div className="mb-4">
+            <label htmlFor="description" className="block text-gray-700 font-semibold mb-2">
+              Description:
+            </label>
             <textarea
-              className='form-control'
-              id='taskDescription'
-              rows={3}
+              id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg"
+              rows="3"
+            ></textarea>
+          </div>
+
+          {/* Start Date */}
+          <div className="mb-4">
+            <label htmlFor="startDate" className="block text-gray-700 font-semibold mb-2 ">
+              Start Date:
+            </label>
+            <input
+              type="date"
+              id="startDate"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
               required
+              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg"
             />
           </div>
 
-          {/* Priority lv */}
-          <div className='form-group'>
-            <label htmlFor='taskPriority'>Priority</label>
+          {/* End Date */}
+          <div className="mb-4">
+            <label htmlFor="endDate" className="block text-gray-700 font-semibold mb-2">
+              End Date:
+            </label>
+            <input
+              type="date"
+              id="endDate"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              required
+              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg"
+            />
+          </div>
+
+
+          <div className="mb-4">
+            <label htmlFor="reward" className="block text-gray-700 font-semibold mb-2">
+              Reward:
+            </label>
+            <textarea
+              id="description"
+              value={reward}
+              onChange={(e) => setReward(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg"
+              rows="3"
+            ></textarea>
+          </div>
+
+
+          {/* Priority */}
+          <div className="mb-4">
+            <label htmlFor="priority" className="block text-gray-700 font-semibold mb-2">
+              Priority:
+            </label>
             <select
-              className='form-control'
-              id='taskPriority'
+              id="priority"
               value={priority}
               onChange={(e) => setPriority(e.target.value)}
-              required
+              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg"
             >
-              <option value=''>Select priority</option>
-              <option value='low'>Low</option>
-              <option value='medium'>Medium</option>
-              <option value='high'>High</option>
+              <option value="">Select Priority</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
             </select>
           </div>
 
-          {/* buttons */}
-          <button type='submit' className='btn btn-primary'>
-            Save
-          </button>
-          <button type='button' className='btn btn-secondary' onClick={onClose}>
-            Close
-          </button>
+          {/* Add other form fields */}
+          <div className="flex justify-center">
+            <button
+              type="button"
+              onClick={handleSubmit}
+              className="bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600 rounded-lg"
+            >
+              Save
+            </button>
+          </div>
         </form>
       </div>
     </div>

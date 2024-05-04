@@ -7,6 +7,7 @@ const DetailTaskPopup = ({ onClose, onTaskSaved, onTaskDeleted, selectedTask }) 
     const [startDate, setStartDate] = useState(selectedTask ? selectedTask.startDate : '');
     const [endDate, setEndDate] = useState(selectedTask ? selectedTask.endDate : '');
     const [priority, setPriority] = useState(selectedTask ? selectedTask.priority : '');
+    const [reward, setReward] = useState(selectedTask ? selectedTask.reward : '');
 
     const handleSaveTask = () => {
         const updatedTask = {
@@ -16,6 +17,7 @@ const DetailTaskPopup = ({ onClose, onTaskSaved, onTaskDeleted, selectedTask }) 
             startDate,
             endDate,
             priority,
+            reward,
         };
         onTaskSaved(updatedTask);
         setIsEditMode(false);
@@ -34,13 +36,13 @@ const DetailTaskPopup = ({ onClose, onTaskSaved, onTaskDeleted, selectedTask }) 
 
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white rounded-lg shadow-lg p-6 w-96">
-                <div className="flex justify-between items-center mb-4">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60">
+            <div className="bg-[#FAF4E6] rounded-lg shadow-lg p-6 w-96 border-2 border-black rounded-xl">
+                <div className="flex justify-between items-center mb-4 ">
                     <h2 className="text-2xl font-semibold">Task Details</h2>
                     <button
                         type="button"
-                        className="text-gray-500 hover:text-gray-700 focus:outline-none"
+                        className="bg-[#F27C7C] hover:bg-[#F06565] focus:outline-none text-black font-bold py-0 px-2 border-2 border-black rounded-lg"
                         onClick={(event) => handleCloseTaskDetail(event)}
                     >
                         <svg
@@ -62,8 +64,8 @@ const DetailTaskPopup = ({ onClose, onTaskSaved, onTaskDeleted, selectedTask }) 
                 {isEditMode ? (
                     <form>
                         {/* Render form fields for editing task details */}
-                        <div className="mb-4">
-                            <label htmlFor="title" className="block text-gray-700 font-semibold mb-2">
+                        <div className="mb-4 ">
+                            <label htmlFor="title" className="block text-gray-700 font-semibold mb-2 ">
                                 Title:
                             </label>
                             <input
@@ -72,7 +74,7 @@ const DetailTaskPopup = ({ onClose, onTaskSaved, onTaskDeleted, selectedTask }) 
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
                                 required
-                                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+                                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg"
                             />
                         </div>
 
@@ -85,14 +87,14 @@ const DetailTaskPopup = ({ onClose, onTaskSaved, onTaskDeleted, selectedTask }) 
                                 id="description"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
-                                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+                                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg"
                                 rows="3"
                             ></textarea>
                         </div>
 
                         {/* Start Date */}
                         <div className="mb-4">
-                            <label htmlFor="startDate" className="block text-gray-700 font-semibold mb-2">
+                            <label htmlFor="startDate" className="block text-gray-700 font-semibold mb-2 ">
                                 Start Date:
                             </label>
                             <input
@@ -101,7 +103,7 @@ const DetailTaskPopup = ({ onClose, onTaskSaved, onTaskDeleted, selectedTask }) 
                                 value={startDate}
                                 onChange={(e) => setStartDate(e.target.value)}
                                 required
-                                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+                                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg"
                             />
                         </div>
 
@@ -116,8 +118,21 @@ const DetailTaskPopup = ({ onClose, onTaskSaved, onTaskDeleted, selectedTask }) 
                                 value={endDate}
                                 onChange={(e) => setEndDate(e.target.value)}
                                 required
-                                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+                                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg"
                             />
+                        </div>
+
+                        <div className="mb-4">
+                            <label htmlFor="reward" className="block text-gray-700 font-semibold mb-2">
+                                Reward:
+                            </label>
+                            <textarea
+                                id="description"
+                                value={reward}
+                                onChange={(e) => setReward(e.target.value)}
+                                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg"
+                                rows="3"
+                            ></textarea>
                         </div>
 
                         {/* Priority */}
@@ -129,7 +144,7 @@ const DetailTaskPopup = ({ onClose, onTaskSaved, onTaskDeleted, selectedTask }) 
                                 id="priority"
                                 value={priority}
                                 onChange={(e) => setPriority(e.target.value)}
-                                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+                                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg"
                             >
                                 <option value="">Select Priority</option>
                                 <option value="low">Low</option>
@@ -144,14 +159,14 @@ const DetailTaskPopup = ({ onClose, onTaskSaved, onTaskDeleted, selectedTask }) 
                             <button
                                 type="button"
                                 onClick={handleSaveTask}
-                                className="bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600"
+                                className="bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600 rounded-lg"
                             >
                                 Save
                             </button>
                             <button
                                 type="button"
                                 onClick={() => setIsEditMode(false)}
-                                className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
+                                className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 rounded-lg"
                             >
                                 Cancel
                             </button>
@@ -161,38 +176,43 @@ const DetailTaskPopup = ({ onClose, onTaskSaved, onTaskDeleted, selectedTask }) 
                     <>
                         {/* Render task details */}
                         <div className="mb-4">
-                            <strong className="block text-gray-700 font-semibold mb-2">Title:</strong>
-                            <p className="text-gray-800">{title}</p>
+                            <label className="block text-gray-700 font-semibold mb-2">Title:</label>
+                            <p className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg">{title}</p>
                         </div>
                         <div className="mb-4">
-                            <strong className="block text-gray-700 font-semibold mb-2">Description:</strong>
-                            <p className="text-gray-800">{description}</p>
+                            <label className="block text-gray-700 font-semibold mb-2">Description:</label>
+                            <p className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg">{description}</p>
                         </div>
                         <div className="mb-4">
-                            <strong className="block text-gray-700 font-semibold mb-2">Start Date:</strong>
-                            <p className="text-gray-800">{startDate}</p>
+                            <label className="block text-gray-700 font-semibold mb-2">Start Date:</label>
+                            <p className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg">{startDate}</p>
                         </div>
                         <div className="mb-4">
-                            <strong className="block text-gray-700 font-semibold mb-2">End Date:</strong>
-                            <p className="text-gray-800">{endDate}</p>
+                            <label className="block text-gray-700 font-semibold mb-2">End Date:</label>
+                            <p className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg">{endDate}</p>
                         </div>
                         <div className="mb-4">
-                            <strong className="block text-gray-700 font-semibold mb-2">Priority:</strong>
-                            <p className="text-gray-800">{priority}</p>
+                            <label className="block text-gray-700 font-semibold mb-2">Reward:</label>
+                            <p className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg">{reward}</p>
                         </div>
+                        <div className="mb-4">
+                            <label className="block text-gray-700 font-semibold mb-2">Priority:</label>
+                            <p className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg">{priority}</p>
+                        </div>
+
                         {selectedTask.completed ? <div /> :
                             <div className="flex justify-end">
                                 <button
                                     type="button"
                                     onClick={() => setIsEditMode(true)}
-                                    className="bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600"
+                                    className="bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600 rounded-lg"
                                 >
                                     Edit
                                 </button>
                                 <button
                                     type="button"
                                     onClick={handleDeleteTask}
-                                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 rounded-lg"
                                 >
                                     Delete
                                 </button>

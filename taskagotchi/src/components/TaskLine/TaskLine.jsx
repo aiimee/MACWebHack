@@ -151,15 +151,20 @@ const TaskLine = ({ task, onTaskAdded }) => {
         onMouseLeave={() => setIsHovered(false)}
         onClick={task.completed ? undefined : handleBoxClick}
       >
-        {(isHovered || task.completed) && <span>&#10003;</span>}
+        {(isHovered || task.completed) && <span className="text-4xl">&#10003;</span>}
       </div>
 
       <div className='task-details'>
         <div className='task-title'>{task.title.length > 20 ? `${task.title.slice(0, 20)}...` : task.title}</div>
         <div className='task-info'>
-          <div className='task-end-date'>{task.endDate}</div>
-          <div className='task-priority' style={{ backgroundColor: getTaskPriorityColor(task.priority) }}>
-            {task.priority}
+          <div className='task-end-date'>due date: {task.endDate}</div>
+          <div className='flex justify-end'>
+            <div
+              className='task-priority inline-block px-2 py-1 rounded text-white'
+              style={{ backgroundColor: getTaskPriorityColor(task.priority) }}
+            >
+              {task.priority}
+            </div>
           </div>
         </div>
       </div>

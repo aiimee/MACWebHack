@@ -32,14 +32,12 @@ const LateTask = () => {
   return (
     <>
       {/* UPCOMING TASKS */}
-      <div class='mt-4'>
-        <div class='p-4'>
-          <div className='task-list'>
-            {lateTasks.map((task) => (
-              <TaskLine key={task.id} task={task} onTaskAdded={handleTaskSaved}/>
+      <div className='bg-transparent border-black rounded-xl p-4 mb-10 border-2'>
+        <div className='task-list'>
+          {lateTasks.map((task) => (
+            <TaskLine key={task.id} task={task} onTaskAdded={handleTaskSaved} />
 
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </>
