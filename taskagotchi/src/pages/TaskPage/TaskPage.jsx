@@ -29,7 +29,8 @@ const TaskPage = () => {
         </div>
 
         <div>
-          <LevelBar experiencePoints={50}/>
+          {/* EXP is cumulative */}
+          <LevelBar experiencePoints={30}/>
           <Character />
         </div>
 
