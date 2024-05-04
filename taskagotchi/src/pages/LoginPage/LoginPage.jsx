@@ -42,7 +42,7 @@ const LoginPage = () => {
             style={{ flexShrink: 0 }}  
           />
         </div>
-        <div className='flex-1 flex flex-col justify-start p-8 space-y-2 justify-center'>
+        <div className='flex-1 flex flex-col justify-start p-8 space-y-2'>
           <div className='mb-4 text-left'>
             <h2 className='text-3xl font-semibold pb-3 text-[#31332C]'>Welcome back...</h2>
             <p>Your TaskaGotchi misses you.</p>

@@ -1,49 +1,57 @@
-import LevelBar from '../../components/LevelBar/LevelBar'
-import NavigationBar from '../../components/NavigationBar/NavigationBar'
-import Pet from '../../components/TasksTab/Pet/Pet'
-import ToDo from '../../components/TasksTab/ToDo/ToDo'
-import UpComingTasks from '../../components/TasksTab/UpComingTasks/UpComingTasks'
-import Character from '../../components/VirtualPet/Character'
+import React, { useState, useEffect } from 'react';
+import LevelBar from '../../components/LevelBar/LevelBar';
+import CharacterSheet from '../../components/VirtualPet/Characters/Character1';
 
 const TaskPage = () => {
+  const [experience, setExperience] = useState(() => Number(localStorage.getItem('experience') || 0));
+  const [level, setLevel] = useState(() => Number(localStorage.getItem('level') || 1));
+
+  useEffect(() => {
+    localStorage.setItem('experience', experience);
+    localStorage.setItem('level', level);
+  }, [experience, level]);
+
+  const handleExperienceChange = (newExperience) => {
+    setExperience(newExperience);
+  };
+
+  const handleLevelChange = (newLevel) => {
+    setLevel(newLevel);
+  };
+
+  const addExperienceForTesting = (amount) => {
+    handleExperienceChange(experience + amount);
+  };
+
   return (
     <>
-      <div class='container'>
-        <div class='row'>
-
-          {/* LEFT-HAND BOX */}
-          <div class='col-md-6'>
-
-            {/* UPCOMING TASKS */}
-            <UpComingTasks />
-
-            {/* TODO TASK */}
-            <ToDo />
-          </div>
-
-          {/* RIGHT-HAND BOX */}
-          <div class='col-md-6'>
-            {/* PETCOMPONENT? ??? */}
-            <Pet />
-          </div>
+      <div className='container'>
+        <div className='row'>
+          <button onClick={() => addExperienceForTesting(10)}>Add 10 XP</button>
+          <button onClick={() => addExperienceForTesting(50)}>Add 50 XP</button>
+          <button onClick={() => addExperienceForTesting(100)}>Add 100 XP</button>
         </div>
-
         <div>
-          {/* EXP is cumulative */}
-          <LevelBar experiencePoints={30} />
-          <Character />
-        </div>
-
-        {/* SHOP */}
-        <div class='row'>
-          <div class='col-md-12 text-center mt-4'>
-            <button class='btn btn-primary btn-lg'>SHOP???</button>
-          </div>
+          <LevelBar
+            experiencePoints={experience}
+            currentLevel={level}
+            onExperienceChange={handleExperienceChange}
+            onLevelChange={handleLevelChange}
+          />
+          <CharacterSheet
+            character="character1"
+            experiencePoints={experience}
+            currentLevel={level}
+            onExperienceChange={handleExperienceChange}
+            onLevelChange={handleLevelChange}
+          />
         </div>
       </div>
-
     </>
-  )
-}
+  );
+};
 
-export default TaskPage
+export default TaskPage;
+
+
+
