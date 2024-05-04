@@ -42,7 +42,7 @@ const TaskPage = () => {
           style={{ width: '359px', height: '342px'}}
         >
           <CharacterSheet
-            character="character1"
+            character="character2"
             experiencePoints={experience}
             currentLevel={level}
             onExperienceChange={handleExperienceChange}
