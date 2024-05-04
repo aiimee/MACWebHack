@@ -29,7 +29,7 @@ const NavigationBar = () => {
         </div>
         <div className="text-2xl cursor-pointer text-gray-800">
           {/* TODO: Connect this to the page */}
-          <button className="border-2 border-black text-black py-2 px-4 rounded shadow-md shadow-black opacity-100">
+          <button className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100">
             Login/Sign Up
           </button>
         </div>
