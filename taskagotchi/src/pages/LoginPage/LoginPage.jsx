@@ -1,95 +1,91 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import img from '../../assets/images/browse.png'
-
-// Assume TailwindCSS is properly configured in your project
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import img from '../../assets/images/browse.png';
 
 const LoginPage = () => {
-  const navigate = useNavigate()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [errorMessage, setErrorMessage] = useState('')
-  const [successMessage, setSuccessMessage] = useState('')
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleLogin = () => {
-    const users = JSON.parse(localStorage.getItem('users')) || []
-    const user = users.find(user => user.email === email && user.password === password)
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const user = users.find(user => user.email === email && user.password === password);
 
     if (user) {
-      localStorage.setItem('loggedInUser', JSON.stringify(user))
-      setErrorMessage('')
-      setSuccessMessage('Login successful!')
+      localStorage.setItem('loggedInUser', JSON.stringify(user));
+      setErrorMessage('');
+      setSuccessMessage('Login successful!');
       setTimeout(() => {
-        navigate('/')
-      }, 2000)
+        navigate('/');
+      }, 2000);
     } else {
-      setSuccessMessage('')
-      setErrorMessage('Invalid email or password')
+      setSuccessMessage('');
+      setErrorMessage('Invalid email or password');
     }
-  }
+  };
 
   const handleSignupClick = () => {
-    navigate('/signup')
-  }
+    navigate('/signup');
+  };
 
   return (
-    <div className='flex justify-center items-center min-h-screen'>
-      <div className='flex flex-col md:flex-row bg-white rounded-lg shadow-lg p-6 border'>
-        {errorMessage && <div className='alert alert-danger'>{errorMessage}</div>}
-        {successMessage && <div className='alert alert-success'>{successMessage}</div>}
-        <img
-          src={img}
-          alt='sunset'
-          className='md:w-1/2 rounded-lg mb-4 mt-4 md:mt-0 object-cover'
-        />
-        <div className='md:w-1/2'>
-          <div className='flex flex-col justify-center'>
-            <div className='mb-4 text-left'>
-              <h2 className='text-2xl font-bold'>Hey there!</h2>
-              <p>Missed us? We sure missed you.</p>
-            </div>
-            <form>
-              <div className='mb-3'>
-                <input
-                  type='text'
-                  className='form-input form-control-lg bg-gray-100 text-base p-2 w-full'
-                  placeholder='Email address'
-                  id='email'
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-              <div className='mb-3'>
-                <input
-                  type='password'
-                  className='form-input form-control-lg bg-gray-100 text-base p-2 w-full'
-                  placeholder='Password'
-                  id='password'
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
-              <div className='mt-4 mb-3'>
-                <button
-                  type='button'
-                  className='btn btn-lg bg-orange-600 border-orange-600 w-full text-base p-3 transition-colors duration-300 ease-in-out hover:bg-orange-700 focus:bg-orange-700'
-                  onClick={handleLogin}
-                >Login</button>
-              </div>
-            </form>
-            <div className='text-left'>
-              <small>
-                Don't have an account? Sign up <span onClick={handleSignupClick} className='underline text-orange-600 cursor-pointer'>here</span>.
-              </small>
-            </div>
+    <div className='flex justify-center items-center m-24'>
+      <div className='flex flex-row md:flex-row bg-[#FAF4E6] rounded-xl shadow-custom p-6 border-2 border-[#45473F] max-w-5xl w-full'>
+        {errorMessage && <div className='text-red-600'>{errorMessage}</div>}
+        {successMessage && <div className='text-green-600'>{successMessage}</div>}
+        <div className='flex-1 w-full'>
+          <img
+            src={img}
+            alt='sunset'
+            className='inset-0 w-full h-full object-cover rounded-xl'
+          />
+        </div>
+        <div className='flex-1 flex flex-col justify-start p-8'>
+          <div className='mb-4 text-left'>
+            <h2 className='text-2xl font-bold'>Welcome back...</h2>
+            <p>Your TaskaGotchi misses you.</p>
           </div>
+          <form className='space-y-6'>
+            <input
+              type='text'
+              className='form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom'
+              placeholder='Email address'
+              id='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input
+              type='password'
+              className='form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom'
+              placeholder='Password'
+              id='password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button
+              type='button'
+              className='bg-[#FAF4E6] hover:bg-orange-600 w-full text-[#45473F] font-bold py-3 px-6 rounded-lg shadow-custom transition duration-300 border-2 border-[#45473F]'
+              onClick={handleLogin}
+            >
+              Login
+            </button>
+            <p className='text-left mt-3'>
+              Don't have an account? Sign up <span onClick={handleSignupClick} className='underline text-orange-600 cursor-pointer'>here</span>.
+            </p>
+          </form>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;
+
+
+
+
 

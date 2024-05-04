@@ -83,7 +83,7 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className='flex justify-center items-start m-12'>
+    <div className='flex justify-center items-center m-12'>
       <div className='flex flex-row bg-[#FAF4E6] shadow-custom rounded-xl p-6 w-full max-w-5xl border-2 border-[#45473F]'>
         {errorMessage && <div className='text-red-600'>{errorMessage}</div>}
         {successMessage && <div className='text-green-600'>{successMessage}</div>}
@@ -152,11 +152,11 @@ const SignUpPage = () => {
           </p>
         </div>
 
-        <div className='flex-1 relative w-full'>
+        <div className='flex-1 w-full'>
           <img
             src={img}
             alt='sunset'
-            className='absolute inset-0 w-full h-full object-cover rounded-xl'
+            className='inset-0 w-full h-full object-cover rounded-xl p-6'
           />
         </div>
 
