@@ -1,9 +1,8 @@
-/* global localStorage */
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import img from '../../assets/images/browse.png'
 
-import './LoginPage.css'
+// Assume TailwindCSS is properly configured in your project
 
 const LoginPage = () => {
   const navigate = useNavigate()
@@ -20,7 +19,6 @@ const LoginPage = () => {
       localStorage.setItem('loggedInUser', JSON.stringify(user))
       setErrorMessage('')
       setSuccessMessage('Login successful!')
-
       setTimeout(() => {
         navigate('/')
       }, 2000)
@@ -35,30 +33,26 @@ const LoginPage = () => {
   }
 
   return (
-  // main container
-    <div class='container d-flex justify-content-center align-items-center min-vh-100'>
-      {/* login container */}
-      <div class='row border rounded-5 p-3 bg-white shadow box-area'>
+    <div className='flex justify-center items-center min-h-screen'>
+      <div className='flex flex-col md:flex-row bg-white rounded-lg shadow-lg p-6 border'>
         {errorMessage && <div className='alert alert-danger'>{errorMessage}</div>}
         {successMessage && <div className='alert alert-success'>{successMessage}</div>}
-        {/* img */}
         <img
           src={img}
           alt='sunset'
-          className='col-md-6 rounded-5 left-box mb-2 mt-2 object-fit-cover img-fluid'
+          className='md:w-1/2 rounded-lg mb-4 mt-4 md:mt-0 object-cover'
         />
-        {/* right box */}
-        <div class='col-md-6 right-box  '>
-          <div class='row align-items-center'>
-            <div className='header-text mb-4 text-start'>
-              <h2>Hey there!</h2>
+        <div className='md:w-1/2'>
+          <div className='flex flex-col justify-center'>
+            <div className='mb-4 text-left'>
+              <h2 className='text-2xl font-bold'>Hey there!</h2>
               <p>Missed us? We sure missed you.</p>
             </div>
             <form>
-              <div class='input-group mb-3'>
+              <div className='mb-3'>
                 <input
                   type='text'
-                  class='form-control form-control-lg bg-light fs-6'
+                  className='form-input form-control-lg bg-gray-100 text-base p-2 w-full'
                   placeholder='Email address'
                   id='email'
                   value={email}
@@ -66,10 +60,10 @@ const LoginPage = () => {
                   required
                 />
               </div>
-              <div className='password-box'>
+              <div className='mb-3'>
                 <input
                   type='password'
-                  className='form-control form-control-lg bg-light fs-6'
+                  className='form-input form-control-lg bg-gray-100 text-base p-2 w-full'
                   placeholder='Password'
                   id='password'
                   value={password}
@@ -77,35 +71,18 @@ const LoginPage = () => {
                   required
                 />
               </div>
-              <div class='input-group mb-3 mt-4'>
+              <div className='mt-4 mb-3'>
                 <button
                   type='button'
-                  class='btn btn-lg btn-primary w-100 fs-6'
-                  style={{
-                    background: '#ca5b16',
-                    borderColor: '#ca5b16',
-                    transition: 'background-color 0.3s, box-shadow 0.3s',
-                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)'
-                  }}
+                  className='btn btn-lg bg-orange-600 border-orange-600 w-full text-base p-3 transition-colors duration-300 ease-in-out hover:bg-orange-700 focus:bg-orange-700'
                   onClick={handleLogin}
-                  onMouseEnter={(e) => {
-                    e.target.style.background = '#b65618'
-                    e.target.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.background = '#ca5b16'
-                    e.target.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)'
-                  }}
-                >Login
-
-                </button>
+                >Login</button>
               </div>
             </form>
-            <div className='row text-start'>
+            <div className='text-left'>
               <small>
-                Don't have an account? Sign up <span onClick={handleSignupClick} style={{ textDecoration: 'underline', color: '#ca5b16', cursor: 'pointer' }}>here</span>.
+                Don't have an account? Sign up <span onClick={handleSignupClick} className='underline text-orange-600 cursor-pointer'>here</span>.
               </small>
-
             </div>
           </div>
         </div>
@@ -115,3 +92,4 @@ const LoginPage = () => {
 }
 
 export default LoginPage
+
