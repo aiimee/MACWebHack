@@ -20,7 +20,7 @@ const TaskPage = () => {
     setLevel(newLevel);
   };
 
-  const addExperienceForTesting = (amount) => {
+  const addExperience = (amount) => {
     handleExperienceChange(experience + amount);
   };
 
@@ -33,35 +33,35 @@ const TaskPage = () => {
 
   return (
     <>
-      <div className='container'>
-        <div className='row'>
-          <button onClick={() => addExperienceForTesting(10)}>Add 10 XP</button>
-          <button onClick={() => addExperienceForTesting(50)}>Add 50 XP</button>
-          <button onClick={() => addExperienceForTesting(100)}>Add 100 XP</button>
-          <button onClick={toggleHeartAnimation}>Show Love</button>
-        </div>
-        <LevelBar
-            experiencePoints={experience}
-            currentLevel={level}
-            onExperienceChange={handleExperienceChange}
-            onLevelChange={handleLevelChange}
-          />
-        <div
-          className='flex flex-col items-center justify-center my-5 bg-[#B0B0A6] rounded-lg shadow-pet border-4 border-[#45473F]'
-          style={{ width: '359px', height: '342px'}}
-        >
-          <CharacterSheet
-            character="character2"
-            experiencePoints={experience}
-            currentLevel={level}
-            onExperienceChange={handleExperienceChange}
-            onLevelChange={handleLevelChange}
-            showHeart={showHeart}
-          />
-        </div>
-        
+    <div className='container flex flex-col items-center justify-center'>
+      {/* Cheat engine lol please comment out on final product */}
+      <div className='row space-x-4 mb-4'>
+        <button onClick={() => addExperience(10)} className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">Add 10 XP</button>
+        <button onClick={() => addExperience(50)} className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">Add 50 XP</button>
+        <button onClick={() => addExperience(100)} className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">Add 100 XP</button>
       </div>
-    </>
+      <LevelBar
+          experiencePoints={experience}
+          currentLevel={level}
+          onExperienceChange={handleExperienceChange}
+          onLevelChange={handleLevelChange}
+        />
+      <div
+        className='flex flex-col items-center justify-center my-5 bg-[#B0B0A6] rounded-lg shadow-pet border-4 border-[#45473F]'
+        style={{ width: '359px', height: '342px'}}
+      >
+        <CharacterSheet
+          character="character2"
+          experiencePoints={experience}
+          currentLevel={level}
+          onExperienceChange={handleExperienceChange}
+          onLevelChange={handleLevelChange}
+          showHeart={showHeart}
+        />
+      </div>
+      <button onClick={toggleHeartAnimation} className="border-2 border-[#45473F] text-black py-2 px-4 rounded-lg shadow-custom opacity-100 hover:bg-[#FFBCF0]">🖤</button>
+    </div>
+  </>
   );
 };
 
