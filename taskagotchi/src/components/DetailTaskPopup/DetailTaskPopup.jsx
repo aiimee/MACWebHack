@@ -29,6 +29,7 @@ const DetailTaskPopup = ({ onClose, onTaskSaved, onTaskDeleted, selectedTask }) 
     const handleCloseTaskDetail = (event) => {
         event.stopPropagation();
         onClose();
+        window.location.reload();
     };
 
 
@@ -179,23 +180,25 @@ const DetailTaskPopup = ({ onClose, onTaskSaved, onTaskDeleted, selectedTask }) 
                             <strong className="block text-gray-700 font-semibold mb-2">Priority:</strong>
                             <p className="text-gray-800">{priority}</p>
                         </div>
+                        {selectedTask.completed ? <div /> :
+                            <div className="flex justify-end">
+                                <button
+                                    type="button"
+                                    onClick={() => setIsEditMode(true)}
+                                    className="bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600"
+                                >
+                                    Edit
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={handleDeleteTask}
+                                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        }
 
-                        <div className="flex justify-end">
-                            <button
-                                type="button"
-                                onClick={() => setIsEditMode(true)}
-                                className="bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600"
-                            >
-                                Edit
-                            </button>
-                            <button
-                                type="button"
-                                onClick={handleDeleteTask}
-                                className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-                            >
-                                Delete
-                            </button>
-                        </div>
                     </>
                 )}
             </div>

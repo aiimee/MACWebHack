@@ -58,6 +58,7 @@ const AddTaskPopup = ({ onClose, onTaskAdded }) => {
     setTimeout(() => {
       onClose()
     }, 1000)
+    window.location.reload();
   }
 
   const generateUniqueId = (user) => {

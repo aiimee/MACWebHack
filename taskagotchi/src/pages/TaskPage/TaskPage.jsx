@@ -8,16 +8,6 @@ import Character from '../../components/VirtualPet/Character'
 import LateTask from '../../components/TasksTab/LateTask/LateTask'
 
 const TaskPage = () => {
-  const [tasks, setTasks] = useState([]); // Initialize tasks
-  const [selectedTask, setSelectedTask] = useState(null);
-
-  const handleTaskUpdate = (updatedTask) => {
-    const newTasks = tasks.map(task =>
-      task.id === updatedTask.id ? updatedTask : task
-    );
-    setTasks(newTasks);
-    setSelectedTask(null); // Close the popup after updating
-  };
   return (
     // MT 20 REMOVE LATER
 
