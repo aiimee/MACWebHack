@@ -1,3 +1,4 @@
+import LevelBar from '../../components/LevelBar/LevelBar'
 import NavigationBar from '../../components/NavigationBar/NavigationBar'
 import Pet from '../../components/TasksTab/Pet/Pet'
 import ToDo from '../../components/TasksTab/ToDo/ToDo'
@@ -28,6 +29,7 @@ const TaskPage = () => {
         </div>
 
         <div>
+          <LevelBar experiencePoints={50}/>
           <Character />
         </div>
 
