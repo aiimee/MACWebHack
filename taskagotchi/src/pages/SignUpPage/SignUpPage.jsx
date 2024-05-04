@@ -83,7 +83,7 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className='flex justify-center items-center min-h-screen'>
+    <div className='flex justify-center items-start m-12'>
       <div className='flex flex-row bg-[#FAF4E6] shadow-custom rounded-xl p-6 w-full max-w-5xl border-2 border-[#45473F]'>
         {errorMessage && <div className='text-red-600'>{errorMessage}</div>}
         {successMessage && <div className='text-green-600'>{successMessage}</div>}
@@ -142,7 +142,7 @@ const SignUpPage = () => {
             />
           </div>
           <button
-            className='bg-[#FAF4E6] hover:bg-[#B0B0A6] w-full text-[#45473F] font-bold py-3 px-6 rounded-lg shadow-custom transition duration-300 border-2 border-[#45473F]'
+            className='bg-[#FAF4E6] hover:bg-orange-600 w-full text-[#45473F] font-bold py-3 px-6 rounded-lg shadow-custom transition duration-300 border-2 border-[#45473F]'
             onClick={handleRegister}
           >
             Sign Up
