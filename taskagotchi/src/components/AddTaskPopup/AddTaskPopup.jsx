@@ -36,7 +36,7 @@ const AddTaskPopup = ({ onClose, onTaskAdded }) => {
       completed: false,
       startDate,
       endDate,
-      reward,
+      reward
     }
 
     // store in local storage
@@ -55,12 +55,12 @@ const AddTaskPopup = ({ onClose, onTaskAdded }) => {
     setErrorMessage('')
 
     // trigger reload data from local storage
-    onTaskAdded();
+    onTaskAdded()
 
     setTimeout(() => {
       onClose()
     }, 1000)
-    window.location.reload();
+    window.location.reload()
   }
 
   const generateUniqueId = (user) => {
@@ -78,26 +78,26 @@ const AddTaskPopup = ({ onClose, onTaskAdded }) => {
 
   return (
     <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-60'>
-      <div className="bg-[#FAF4E6] rounded-lg shadow-lg p-6 w-96 border-2 border-black rounded-xl">
-        <div className="flex justify-between items-center mb-4 ">
-          <h2 className="text-2xl font-semibold">Add Task</h2>
+      <div className='bg-[#FAF4E6] rounded-lg shadow-lg p-6 w-96 border-2 border-black rounded-xl'>
+        <div className='flex justify-between items-center mb-4 '>
+          <h2 className='text-2xl font-semibold'>Add Task</h2>
           <button
-            type="button"
-            className="bg-[#F27C7C] hover:bg-[#F06565] focus:outline-none text-black font-bold py-0 px-2 border-2 border-black rounded-lg"
+            type='button'
+            className='bg-[#F27C7C] hover:bg-[#F06565] focus:outline-none text-black font-bold py-0 px-2 border-2 border-black rounded-lg'
             onClick={onClose}
           >
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+              xmlns='http://www.w3.org/2000/svg'
+              className='h-6 w-6'
+              fill='none'
+              viewBox='0 0 24 24'
+              stroke='currentColor'
             >
               <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                strokeLinecap='round'
+                strokeLinejoin='round'
                 strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
+                d='M6 18L18 6M6 6l12 12'
               />
             </svg>
           </button>
@@ -107,103 +107,101 @@ const AddTaskPopup = ({ onClose, onTaskAdded }) => {
         <form>
 
           {/* Render form fields for editing task details */}
-          <div className="mb-4 ">
-            <label htmlFor="title" className="block text-gray-700 font-semibold mb-2 ">
+          <div className='mb-4 '>
+            <label htmlFor='title' className='block text-gray-700 font-semibold mb-2 '>
               Title:
             </label>
             <input
-              type="text"
-              id="title"
+              type='text'
+              id='title'
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg"
+              className='w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg'
             />
           </div>
 
           {/* Description */}
-          <div className="mb-4">
-            <label htmlFor="description" className="block text-gray-700 font-semibold mb-2">
+          <div className='mb-4'>
+            <label htmlFor='description' className='block text-gray-700 font-semibold mb-2'>
               Description:
             </label>
             <textarea
-              id="description"
+              id='description'
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg"
-              rows="3"
-            ></textarea>
+              className='w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg'
+              rows='3'
+            />
           </div>
 
           {/* Start Date */}
-          <div className="mb-4">
-            <label htmlFor="startDate" className="block text-gray-700 font-semibold mb-2 ">
+          <div className='mb-4'>
+            <label htmlFor='startDate' className='block text-gray-700 font-semibold mb-2 '>
               Start Date:
             </label>
             <input
-              type="date"
-              id="startDate"
+              type='date'
+              id='startDate'
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg"
+              className='w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg'
             />
           </div>
 
           {/* End Date */}
-          <div className="mb-4">
-            <label htmlFor="endDate" className="block text-gray-700 font-semibold mb-2">
+          <div className='mb-4'>
+            <label htmlFor='endDate' className='block text-gray-700 font-semibold mb-2'>
               End Date:
             </label>
             <input
-              type="date"
-              id="endDate"
+              type='date'
+              id='endDate'
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg"
+              className='w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg'
             />
           </div>
 
-
-          <div className="mb-4">
-            <label htmlFor="reward" className="block text-gray-700 font-semibold mb-2">
+          <div className='mb-4'>
+            <label htmlFor='reward' className='block text-gray-700 font-semibold mb-2'>
               Reward:
             </label>
             <textarea
-              id="description"
+              id='description'
               value={reward}
               onChange={(e) => setReward(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg"
-              rows="3"
-            ></textarea>
+              className='w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg'
+              rows='3'
+            />
           </div>
 
-
           {/* Priority */}
-          <div className="mb-4">
-            <label htmlFor="priority" className="block text-gray-700 font-semibold mb-2">
+          <div className='mb-4'>
+            <label htmlFor='priority' className='block text-gray-700 font-semibold mb-2'>
               Priority:
             </label>
             <select
-              id="priority"
+              id='priority'
               value={priority}
               onChange={(e) => setPriority(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg"
+              className='w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 rounded-lg'
             >
-              <option value="">Select Priority</option>
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
+              <option value=''>Select Priority</option>
+              <option value='low'>Low</option>
+              <option value='medium'>Medium</option>
+              <option value='high'>High</option>
             </select>
           </div>
 
           {/* Add other form fields */}
-          <div className="flex justify-center">
+          <div className='flex justify-center'>
             <button
-              type="button"
+              type='button'
               onClick={handleSubmit}
-              className="bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600 rounded-lg"
+              className='bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600 rounded-lg'
             >
               Save
             </button>

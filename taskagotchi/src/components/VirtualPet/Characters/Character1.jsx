@@ -56,7 +56,7 @@ const CharacterSheet = ({ character, experiencePoints, currentLevel, onExperienc
       else if (currentLevel >= 8) setCurrentStage('kid')
       else if (currentLevel >= 5) setCurrentStage('babyCustom')
       else if (currentLevel >= 3) setCurrentStage('baby')
-      else if (currentLevel >=2) setCurrentStage('eggCustom')
+      else if (currentLevel >= 2) setCurrentStage('eggCustom')
       else setCurrentStage('egg')
     }
 
