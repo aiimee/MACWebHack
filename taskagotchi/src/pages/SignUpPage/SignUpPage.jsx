@@ -1,59 +1,54 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import img from '../../assets/images/activities.jpeg'
-import { isValidEmail, isStrongPassword, isVaidPhonenumber } from '../../utils/validationUtils'
-import './SignUpPage.css'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import img from '../../assets/images/tama.png';
+import { isValidEmail, isVaidPhonenumber } from '../../utils/validationUtils';
 
 const SignUpPage = () => {
-  const navigate = useNavigate()
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [email, setEmail] = useState('')
-  const [phoneNumber, setPhoneNumber] = useState('')
+  const navigate = useNavigate();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
 
-  const [errorMessage, setErrorMessage] = useState('')
-  const [successMessage, setSuccessMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleRegister = () => {
     if (!firstName || !lastName || !email || !password) {
-      setErrorMessage('Name, email, and password are required fields.')
-      return
+      setErrorMessage('Name, email, and password are required fields.');
+      return;
     }
 
     if (!isValidEmail(email)) {
-      setErrorMessage('Please enter a valid email address.')
-      return
+      setErrorMessage('Please enter a valid email address.');
+      return;
     }
 
-    if (!isStrongPassword(password)) {
-      setErrorMessage('Password must be betwen 8 and 20 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.')
-      return
-    }
+    // if (!isStrongPassword(password)) {
+    //   setErrorMessage('Password must be between 8 and 20 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.');
+    //   return;
+    // }
 
     if (password !== confirmPassword) {
-      setErrorMessage('Confirm password and passwork are not match')
-      return
+      setErrorMessage('Confirm password and password do not match');
+      return;
     }
 
     if (!isVaidPhonenumber(phoneNumber) && phoneNumber !== '') {
-      setErrorMessage('Phone number is invalid')
-      return
+      setErrorMessage('Phone number is invalid');
+      return;
     }
 
-    // Get user array form localstorage
-    const users = JSON.parse(localStorage.getItem('users')) || []
-
-    // Check if the email already exists in the users array
-    const existingUser = users.find(user => user.email === email)
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const existingUser = users.find(user => user.email === email);
     if (existingUser) {
-      setErrorMessage('Email already exists. Please use a different email.')
-      return
+      setErrorMessage('Email already exists. Please use a different email.');
+      return;
     }
 
-    // Create new user
-    const userId = generateUniqueId(users)
+    const userId = generateUniqueId(users);
     const newUser = {
       id: userId,
       firstName,
@@ -63,164 +58,122 @@ const SignUpPage = () => {
       tasks: [],
       rewardPoints: 0,
       dateJoined: new Date().toISOString()
-    }
+    };
 
-    users.push(newUser)
-    localStorage.setItem('users', JSON.stringify(users))
-    setErrorMessage('')
-    setSuccessMessage('Registration successful! Now try to log in hehe')
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+    setErrorMessage('');
+    setSuccessMessage('Registration successful! Now try to log in hehe');
 
     setTimeout(() => {
-      navigate('/login')
-    }, 2000)
-  }
+      navigate('/login');
+    }, 2000);
+  };
 
-  // ID goes brm brm
   const generateUniqueId = (users) => {
-    // Find the maximum ID from the existing users
-    let maxId = 0
+    let maxId = 0;
     if (users.length > 0) {
-      maxId = Math.max(...users.map(user => user.id))
-    } else {
-      maxId = 0
+      maxId = Math.max(...users.map(user => user.id));
     }
-    // Increment the maximum ID by 1 to generate a new unique ID
-    const newId = maxId + 1
-    return newId
-  }
+    return maxId + 1;
+  };
 
   const handleLoginClick = () => {
-    navigate('/login')
-  }
+    navigate('/login');
+  };
 
   return (
-    // main container
-    <div className='container d-flex justify-content-center align-items-center min-vh-100'>
-      {/* signup container */}
-      <div className='row border rounded-5 p-3 bg-white shadow box-area'>
+    <div className='flex justify-center items-center min-h-screen'>
+      <div className='flex flex-row bg-[#FAF4E6] shadow-custom rounded-xl p-6 w-full max-w-5xl border-2 border-[#45473F]'>
 
-        {errorMessage && <div className='alert alert-danger'>{errorMessage}</div>}
-        {successMessage && <div className='alert alert-success'>{successMessage}</div>}
+        {errorMessage && <div className='text-red-600'>{errorMessage}</div>}
+        {successMessage && <div className='text-green-600'>{successMessage}</div>}
 
-        {/* signup form (right) */}
-        <div class='col-md-6 right-box'>
-          <div class='row align-items-center'>
-            <div class='header-text mb-4 text-start'>
-              <h1>Welcome to Soil!</h1>
-              <p>Fresh, organic goodness awaits. Let's embark on a journey to wellness together.</p>
-            </div>
-            <form>
-              <div className='mb-3'>
-                {/* <label htmlFor="email" className="form-label">Email</label> */}
-                <input
-                  type='email'
-                  className='form-control form-control-lg bg-light fs-6'
-                  placeholder='Email address'
-                  id='email'
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-
-              <div className='row mb-3'>
-                <div className='col'>
-                  <input
-                    type='text'
-                    className='form-control form-control-lg bg-light fs-6'
-                    placeholder='First Name'
-                    id='First Name'
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className='col'>
-                  <input
-                    type='text'
-                    className='form-control form-control-lg bg-light fs-6'
-                    placeholder='Last Name'
-                    id='Last Name'
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className='mb-3'>
-                <input
-                  type='password'
-                  className='form-control form-control-lg bg-light fs-6'
-                  placeholder='Password'
-                  id='password'
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
-              <div className='mb-3'>
-                <input
-                  type='password'
-                  className='form-control form-control-lg bg-light fs-6'
-                  placeholder='Confirm Password'
-                  id='confirmPassword'
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  required
-                />
-              </div>
-              <div className='mb-3'>
-                <input
-                  type='tel'
-                  className='form-control form-control-lg bg-light fs-6'
-                  placeholder='Phone Number'
-                  id='phoneNumber'
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                />
-              </div>
-              <div class='input-group mb-3 mt-4'>
-                <button
-                  type='button'
-                  class='btn btn-lg btn-primary w-100 fs-6'
-                  style={{
-                    background: '#ca5b16',
-                    borderColor: '#ca5b16',
-                    transition: 'background-color 0.3s, box-shadow 0.3s',
-                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)'
-                  }}
-                  onClick={handleRegister}
-                  onMouseEnter={(e) => {
-                    e.target.style.background = '#b65618'
-                    e.target.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.background = '#ca5b16'
-                    e.target.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)'
-                  }}
-                >
-                  Sign Up
-                </button>
-              </div>
-            </form>
+        <div className='flex-1 space-y-6 p-8'>
+          <div className='space-y-2'>
+            <h1 className='text-3xl font-semibold'>Welcome to Soil!</h1>
+            <p>Fresh, organic goodness awaits. Let's embark on a journey to wellness together.</p>
           </div>
-          <div className='row text-start'>
-            <small>
-              Want to go back to login? Click <span onClick={handleLoginClick} style={{ textDecoration: 'underline', color: '#ca5b16', cursor: 'pointer' }}>here</span>
-            </small>
+          <div>
+            <input
+              type='email'
+              className='form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom'
+              placeholder='Email address'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </div>
+          <div className='flex space-x-4'>
+            <input
+              type='text'
+              className='form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom'
+              placeholder='First Name'
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+            />
+            <input
+              type='text'
+              className='form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom'
+              placeholder='Last Name'
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <input
+              type='password'
+              className='form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom'
+              placeholder='Password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <input
+              type='password'
+              className='form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom'
+              placeholder='Confirm Password'
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <input
+              type='tel'
+              className='form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom'
+              placeholder='Phone Number'
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+          </div>
+          <button
+            className='bg-[#FAF4E6] hover:bg-[#B0B0A6] w-full text-[#45473F] font-bold py-3 px-6 rounded-lg shadow-custom transition duration-300 border-2 border-[#45473F]'
+            onClick={handleRegister}
+          >
+            Sign Up
+          </button>
+          <p>
+            Want to go back to login? Click <span onClick={handleLoginClick} className='text-orange-600 cursor-pointer underline'>here</span>.
+          </p>
         </div>
-        {/* img */}
-        <img
-          src={img}
-          alt='sunset'
-          className='col-md-6 rounded-5 left-box mb-2 mt-2 object-fit-cover img-fluid'
-        />
+
+        <div className='flex-1 relative w-full'>
+          <img
+            src={img}
+            alt='sunset'
+            className='absolute inset-0 w-full h-full object-cover rounded-xl'
+          />
+        </div>
 
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SignUpPage
+export default SignUpPage;
+
