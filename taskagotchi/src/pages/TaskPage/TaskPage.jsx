@@ -35,6 +35,7 @@ const TaskPage = () => {
     <>
       <div className='container flex flex-col items-center justify-center'>
         {/* Cheat engine lol please comment out on final product */}
+        Hacks
         <div className='row space-x-4 mb-4'>
           <button onClick={() => addExperience(10)} className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded'>Add 10 XP</button>
           <button onClick={() => addExperience(50)} className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded'>Add 50 XP</button>
