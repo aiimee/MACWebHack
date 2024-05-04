@@ -28,9 +28,11 @@ const TaskPage = () => {
   };
 
   return (
-    <div className="container mx-auto mt-20">
+
+    <div className="container mx-auto flex flex-col  justify-center items-center">
+      {/* Left side todolist */}
       <div className="flex flex-col md:flex-row">
-        <div className="md:w-1/2 p-4">
+        <div className="md:1/3 m-10">
           <div>
             <h2 className="text-4xl font-bold mb-1">LATE</h2>
             <LateTask />
@@ -45,7 +47,8 @@ const TaskPage = () => {
           </div>
         </div>
 
-        <div className="md:w-1/2 p-4">
+        {/* Right side pet */}
+        <div className="md:w-auto m-10">
           <div className='container flex flex-col items-center justify-center'>
             Hacks
             <div className='row space-x-4 mb-4'>
@@ -63,7 +66,7 @@ const TaskPage = () => {
 
             </div>
             <div
-              className='flex flex-col items-center justify-center my-5 bg-[#B0B0A6] rounded-lg shadow-pet border-4 border-[#45473F]'
+              className='flex flex-col items-center justify-center my-5 bg-[#FAF4E6] rounded-lg shadow-pet border-4 border-[#45473F]'
               style={{ width: '359px', height: '342px' }}
             >
               <CharacterSheet

@@ -31,7 +31,7 @@ const ToDo = () => {
 
   return (
     <>
-      <div className='bg-transparent border-black rounded-xl p-4 mb-10 border-2'>
+      <div className='bg-transparent border-black rounded-xl p-4 mb-10 border-2 shadow-custom'>
         {/* ADD BUTTON */}
         <button
           className='bg-[#A8FF93] hover:bg-[#8FE67E] text-black font-bold py-0 px-2 border-2 border-black rounded-lg flex items-center justify-center mb-4 ml-auto mr-2'

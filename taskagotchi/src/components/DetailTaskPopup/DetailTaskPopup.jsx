@@ -35,7 +35,7 @@ const DetailTaskPopup = ({ onClose, onTaskSaved, onTaskDeleted, selectedTask }) 
   }
 
   return (
-    <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-60'>
+    <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-10'>
       <div className='bg-[#FAF4E6] rounded-lg shadow-lg p-6 w-96 border-2 border-black rounded-xl'>
         <div className='flex justify-between items-center mb-4 '>
           <h2 className='text-2xl font-semibold'>Task Details</h2>
