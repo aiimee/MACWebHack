@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import img from '../../assets/images/browse.png';
+import img from '../../assets/images/love.png';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -35,11 +35,12 @@ const LoginPage = () => {
       <div className='flex flex-row md:flex-row bg-[#FAF4E6] rounded-xl shadow-custom p-6 border-2 border-[#45473F] max-w-5xl w-full'>
         {errorMessage && <div className='text-red-600'>{errorMessage}</div>}
         {successMessage && <div className='text-green-600'>{successMessage}</div>}
-        <div className='flex-1 w-full'>
+        <div className='flex-1'>
           <img
             src={img}
             alt='sunset'
-            className='inset-0 w-full h-full object-cover rounded-xl'
+            className='max-w-xs md:max-w-sm lg:max-w-md rounded-xl object-cover pl-10'  
+            style={{ flexShrink: 0 }}  
           />
         </div>
         <div className='flex-1 flex flex-col justify-start p-8'>
