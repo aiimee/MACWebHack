@@ -5,6 +5,7 @@ import CharacterSheet from '../../components/VirtualPet/Characters/Character1';
 const TaskPage = () => {
   const [experience, setExperience] = useState(() => Number(localStorage.getItem('experience') || 0));
   const [level, setLevel] = useState(() => Number(localStorage.getItem('level') || 1));
+  const [showHeart, setShowHeart] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('experience', experience);
@@ -23,6 +24,13 @@ const TaskPage = () => {
     handleExperienceChange(experience + amount);
   };
 
+  const toggleHeartAnimation = () => {
+    setShowHeart(true);
+    setTimeout(() => {
+      setShowHeart(false);
+    }, 2000);
+  };
+
   return (
     <>
       <div className='container'>
@@ -30,6 +38,7 @@ const TaskPage = () => {
           <button onClick={() => addExperienceForTesting(10)}>Add 10 XP</button>
           <button onClick={() => addExperienceForTesting(50)}>Add 50 XP</button>
           <button onClick={() => addExperienceForTesting(100)}>Add 100 XP</button>
+          <button onClick={toggleHeartAnimation}>Show Love</button>
         </div>
         <LevelBar
             experiencePoints={experience}
@@ -47,9 +56,10 @@ const TaskPage = () => {
             currentLevel={level}
             onExperienceChange={handleExperienceChange}
             onLevelChange={handleLevelChange}
+            showHeart={showHeart}
           />
         </div>
-
+        
       </div>
     </>
   );

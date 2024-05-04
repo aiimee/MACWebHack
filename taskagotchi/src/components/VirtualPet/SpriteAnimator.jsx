@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 
 // Function only works if the sprite sheet is in a horizontal format
 // Animator works by panning accross the sprite sheet at certain intervals
-const SpriteAnimator = ({ spriteSheet, frameWidth, frameHeight, frameCount, animationInterval }) => {
+const SpriteAnimator = ({ spriteSheet, frameWidth, frameHeight, frameCount, animationInterval, scale }) => {
   const [currentFrame, setCurrentFrame] = useState(0)
-  const scale = 6
+  // const scale = 6
 
   useEffect(() => {
     const updateFrame = () => {
