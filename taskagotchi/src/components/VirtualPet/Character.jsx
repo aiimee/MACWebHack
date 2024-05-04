@@ -13,7 +13,7 @@ const Character = () => {
 
   return (
     <div
-      className='flex flex-col items-center justify-center my-5 p-4 bg-[#B0B0A6] rounded-lg shadow-pet'
+      className='flex flex-col items-center justify-center my-5 p-4 bg-[#B0B0A6] rounded-lg shadow-pet border-4 border-[#45473F]'
       style={{ width: '359px', height: '342px' }}
     >
       <SpriteAnimator
