@@ -4,7 +4,6 @@ import NavigationBar from '../../components/NavigationBar/NavigationBar'
 import AccountGeneralTab from '../../components/ProfileTab/AccountGeneralTab'
 import YourOrderTab from '../../components/ProfileTab/YourOrderTab'
 import HealthDataTab from '../../components/ProfileTab/HealthDataTab'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import './ProfilePage.css'
 
 const ProfilePage = () => {
