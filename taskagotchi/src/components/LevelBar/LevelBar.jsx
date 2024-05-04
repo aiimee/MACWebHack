@@ -28,7 +28,7 @@ const LevelBar = ({ experiencePoints }) => {
     return (
         // Level Bar
         <div className='flex items-center justify-center my-5 p-1 bg-[#FAF4E6] rounded-lg shadow-custom relative border-[#31332C] border-2'
-             style={{ width: '359px', height: '43px' }}>
+             style={{ width: '365px', height: '43px' }}>
             {/* Exp bar */}
             <div className='relative w-full h-full rounded-lg overflow-hidden'> 
                 <div className='absolute top-1 left-1 right-1 bottom-1 bg-[#8FC543] rounded-lg'
