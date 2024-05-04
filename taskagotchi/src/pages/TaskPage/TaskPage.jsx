@@ -1,71 +1,84 @@
-import React, { useState } from 'react';
-import LevelBar from '../../components/LevelBar/LevelBar'
-import NavigationBar from '../../components/NavigationBar/NavigationBar'
-import Done from '../../components/TasksTab/Done/Done'
-import Pet from '../../components/TasksTab/Pet/Pet'
-import ToDo from '../../components/TasksTab/ToDo/ToDo'
-import Character from '../../components/VirtualPet/Character'
-import LateTask from '../../components/TasksTab/LateTask/LateTask'
+import React, { useState, useEffect } from 'react'; // Add useEffect import here
+import LevelBar from '../../components/LevelBar/LevelBar';
+import Done from '../../components/TasksTab/Done/Done';
+import Pet from '../../components/TasksTab/Pet/Pet';
+import ToDo from '../../components/TasksTab/ToDo/ToDo';
+import LateTask from '../../components/TasksTab/LateTask/LateTask';
+import CharacterSheet from '../../components/VirtualPet/Characters/Character1';
 
 const TaskPage = () => {
-  return (
-    // MT 20 REMOVE LATER
+  const [experience, setExperience] = useState(() => Number(localStorage.getItem('experience') || 0));
+  const [level, setLevel] = useState(() => Number(localStorage.getItem('level') || 1));
+  const [showHeart, setShowHeart] = useState(false);
 
+  useEffect(() => {
+    localStorage.setItem('experience', experience);
+    localStorage.setItem('level', level);
+  }, [experience, level]);
+
+  const addExperience = (amount) => {
+    setExperience(experience + amount);
+  };
+
+  const toggleHeartAnimation = () => {
+    setShowHeart(true);
+    setTimeout(() => {
+      setShowHeart(false);
+    }, 2000);
+  };
+
+  return (
     <div className="container mx-auto mt-20">
       <div className="flex flex-col md:flex-row">
-        {/* LEFT-HAND SECTION */}
         <div className="md:w-1/2 p-4">
-          {/* UPCOMING TASKS */}
           <div>
-            <h2 className="text-4xl font-bold mb-1 ">LATE</h2>
+            <h2 className="text-4xl font-bold mb-1">LATE</h2>
             <LateTask />
           </div>
-
-          {/* TODO TASKS */}
           <div>
             <h2 className="text-4xl font-bold mb-1">To-Do</h2>
             <ToDo />
           </div>
-
-          {/* DONE */}
           <div>
             <h2 className="text-4xl font-bold mb-1">Done</h2>
             <Done />
           </div>
-
         </div>
 
-
-
-        {/* RIGHT-HAND SECTION */}
         <div className="md:w-1/2 p-4">
-          <div className="bg-white shadow rounded p-4">
-            <Pet />
+          <div className='container flex flex-col items-center justify-center'>
+            Hacks
+            <div className='row space-x-4 mb-4'>
+              <button onClick={() => addExperience(10)} className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded shadow-custom'>Add 10 XP</button>
+              <button onClick={() => addExperience(50)} className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded shadow-custom'>Add 50 XP</button>
+              <button onClick={() => addExperience(100)} className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded shadow-custom'>Add 100 XP</button>
+            </div>
+            <LevelBar
+              experiencePoints={experience}
+              currentLevel={level}
+              onExperienceChange={setExperience}
+              onLevelChange={setLevel}
+            />
+            <div
+              className='flex flex-col items-center justify-center my-5 bg-[#B0B0A6] rounded-lg shadow-pet border-4 border-[#45473F]'
+              style={{ width: '359px', height: '342px' }}
+            >
+              <CharacterSheet
+                character='character2'
+                experiencePoints={experience}
+                currentLevel={level}
+                onExperienceChange={setExperience}
+                onLevelChange={setLevel}
+                showHeart={showHeart}
+              />
+            </div>
+            <button onClick={toggleHeartAnimation} className='border-2 border-[#45473F] text-black py-2 px-4 rounded-lg shadow-custom opacity-100 hover:bg-[#FFBCF0]'>🖤</button>
           </div>
-        </div>
-      </div>
-
-      {/* BOTTOM SECTION */}
-      <div className="mt-8 p-4">
-        {/* LEVEL BAR */}
-        <div className="mb-4">
-          <LevelBar experiencePoints={30} />
-        </div>
-
-        {/* CHARACTER */}
-        <div className="mb-4">
-          <Character />
-        </div>
-
-        {/* SHOP */}
-        <div className="text-center">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            SHOP
-          </button>
         </div>
       </div>
     </div>
   );
 }
 
-export default TaskPage
+export default TaskPage;
+

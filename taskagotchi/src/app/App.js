@@ -9,7 +9,7 @@ import NavigationBar from '../components/NavigationBar/NavigationBar'
 
 function App () {
   return (
-    <div className='App content'>
+    <div className='App flex flex-col min-h-screen'>
       <Router>
         <NavigationBar />
         <Routes>

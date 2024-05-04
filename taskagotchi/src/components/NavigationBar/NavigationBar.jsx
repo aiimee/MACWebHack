@@ -21,17 +21,17 @@ const NavigationBar = () => {
             </Link>
           </span>
         </div>
-        <div className='text-2xl underline cursor-pointer text-gray-800'>
+        <div className='text-2 underline cursor-pointer text-gray-800 justify-center font-bold'>
           {/* TODO: Connect this to the page */}
           <Link className='text-gray-800' to='/'>
             About Us
           </Link>
         </div>
-        <div className='text-2xl cursor-pointer text-gray-800'>
+        <div className='text-2 cursor-pointer text-gray-800'>
           {/* TODO: Connect this to the page */}
-          <button className='border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100'>
+          <Link className='border-2 border-[#45473F] text-black py-2 px-4 rounded-lg shadow-custom opacity-100 hover:bg-orange-600'>
             Login/Sign Up
-          </button>
+          </Link>
         </div>
       </div>
     </div>

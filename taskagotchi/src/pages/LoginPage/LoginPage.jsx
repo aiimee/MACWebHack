@@ -1,9 +1,6 @@
-/* global localStorage */
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import img from '../../assets/images/browse.png'
-
-import './LoginPage.css'
+import img from '../../assets/images/loginPic.png'
 
 const LoginPage = () => {
   const navigate = useNavigate()
@@ -20,7 +17,6 @@ const LoginPage = () => {
       localStorage.setItem('loggedInUser', JSON.stringify(user))
       setErrorMessage('')
       setSuccessMessage('Login successful!')
-
       setTimeout(() => {
         navigate('/')
       }, 2000)
@@ -35,79 +31,54 @@ const LoginPage = () => {
   }
 
   return (
-  // main container
-    <div class='container d-flex justify-content-center align-items-center min-vh-100'>
-      {/* login container */}
-      <div class='row border rounded-5 p-3 bg-white shadow box-area'>
-        {errorMessage && <div className='alert alert-danger'>{errorMessage}</div>}
-        {successMessage && <div className='alert alert-success'>{successMessage}</div>}
-        {/* img */}
-        <img
-          src={img}
-          alt='sunset'
-          className='col-md-6 rounded-5 left-box mb-2 mt-2 object-fit-cover img-fluid'
-        />
-        {/* right box */}
-        <div class='col-md-6 right-box  '>
-          <div class='row align-items-center'>
-            <div className='header-text mb-4 text-start'>
-              <h2>Hey there!</h2>
-              <p>Missed us? We sure missed you.</p>
-            </div>
-            <form>
-              <div class='input-group mb-3'>
-                <input
-                  type='text'
-                  class='form-control form-control-lg bg-light fs-6'
-                  placeholder='Email address'
-                  id='email'
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-              <div className='password-box'>
-                <input
-                  type='password'
-                  className='form-control form-control-lg bg-light fs-6'
-                  placeholder='Password'
-                  id='password'
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
-              <div class='input-group mb-3 mt-4'>
-                <button
-                  type='button'
-                  class='btn btn-lg btn-primary w-100 fs-6'
-                  style={{
-                    background: '#ca5b16',
-                    borderColor: '#ca5b16',
-                    transition: 'background-color 0.3s, box-shadow 0.3s',
-                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)'
-                  }}
-                  onClick={handleLogin}
-                  onMouseEnter={(e) => {
-                    e.target.style.background = '#b65618'
-                    e.target.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.background = '#ca5b16'
-                    e.target.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)'
-                  }}
-                >Login
+    <div className='flex justify-center items-center m-24'>
+      <div className='flex flex-row md:flex-row bg-[#FAF4E6] rounded-xl shadow-custom p-6 border-2 border-[#45473F] max-w-5xl w-full'>
 
-                </button>
-              </div>
-            </form>
-            <div className='row text-start'>
-              <small>
-                Don't have an account? Sign up <span onClick={handleSignupClick} style={{ textDecoration: 'underline', color: '#ca5b16', cursor: 'pointer' }}>here</span>.
-              </small>
-
-            </div>
+        <div className='flex-1 bg-black rounded-lg'>
+          <img
+            src={img}
+            alt='sunset'
+            className='max-w-xs md:max-w-sm lg:max-w-md rounded-xl object-cover'
+            style={{ flexShrink: 0 }}
+          />
+        </div>
+        <div className='flex-1 flex flex-col justify-start p-8 space-y-2'>
+          <div className='mb-4 text-left'>
+            <h2 className='text-3xl font-semibold pb-3 text-[#31332C]'>Welcome back...</h2>
+            <p>Your TaskaGotchi misses you.</p>
           </div>
+          {errorMessage && <div className='text-red-600'>{errorMessage}</div>}
+          {successMessage && <div className='text-green-600'>{successMessage}</div>}
+          <form className='space-y-6'>
+            <input
+              type='text'
+              className='form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom'
+              placeholder='Email address'
+              id='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input
+              type='password'
+              className='form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom'
+              placeholder='Password'
+              id='password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button
+              type='button'
+              className='bg-[#FAF4E6] hover:bg-orange-600 w-full text-[#45473F] font-bold py-3 px-6 rounded-lg shadow-custom transition duration-300 border-2 border-[#45473F]'
+              onClick={handleLogin}
+            >
+              Login
+            </button>
+            <p className='text-left mt-3'>
+              Don't have an account? Sign up <span onClick={handleSignupClick} className='underline text-orange-600 cursor-pointer'>here</span>.
+            </p>
+          </form>
         </div>
       </div>
     </div>
