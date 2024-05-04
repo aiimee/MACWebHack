@@ -31,13 +31,16 @@ const TaskPage = () => {
           <button onClick={() => addExperienceForTesting(50)}>Add 50 XP</button>
           <button onClick={() => addExperienceForTesting(100)}>Add 100 XP</button>
         </div>
-        <div>
-          <LevelBar
+        <LevelBar
             experiencePoints={experience}
             currentLevel={level}
             onExperienceChange={handleExperienceChange}
             onLevelChange={handleLevelChange}
           />
+        <div
+          className='flex flex-col items-center justify-center my-5 bg-[#B0B0A6] rounded-lg shadow-pet border-4 border-[#45473F]'
+          style={{ width: '359px', height: '342px'}}
+        >
           <CharacterSheet
             character="character1"
             experiencePoints={experience}
@@ -46,6 +49,7 @@ const TaskPage = () => {
             onLevelChange={handleLevelChange}
           />
         </div>
+
       </div>
     </>
   );

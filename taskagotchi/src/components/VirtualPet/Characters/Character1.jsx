@@ -65,12 +65,6 @@ const CharacterSheet = ({ character, experiencePoints, currentLevel, onExperienc
           animationInterval={500}
         />
       </div>
-      <LevelBar
-        experiencePoints={experiencePoints}
-        currentLevel={currentLevel}
-        onExperienceChange={onExperienceChange}
-        onLevelChange={onLevelChange}
-      />
     </div>
   );
 };
