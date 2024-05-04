@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import img from '../../assets/images/tama.png';
-import { isValidEmail, isVaidPhonenumber } from '../../utils/validationUtils';
+import { isValidEmail, isStrongPassword, isVaidPhonenumber } from '../../utils/validationUtils';
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -26,10 +26,10 @@ const SignUpPage = () => {
       return;
     }
 
-    // if (!isStrongPassword(password)) {
-    //   setErrorMessage('Password must be between 8 and 20 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.');
-    //   return;
-    // }
+    if (!isStrongPassword(password)) {
+      setErrorMessage('Password must be between 8 and 20 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.');
+      return;
+    }
 
     if (password !== confirmPassword) {
       setErrorMessage('Confirm password and password do not match');
@@ -85,14 +85,15 @@ const SignUpPage = () => {
   return (
     <div className='flex justify-center items-center m-12'>
       <div className='flex flex-row bg-[#FAF4E6] shadow-custom rounded-xl p-6 w-full max-w-5xl border-2 border-[#45473F]'>
-        {errorMessage && <div className='text-red-600'>{errorMessage}</div>}
-        {successMessage && <div className='text-green-600'>{successMessage}</div>}
+
 
         <div className='flex-1 space-y-6 p-8'>
           <div className='space-y-2'>
-            <h1 className='text-3xl font-semibold'>Welcome to TaskaGotchi!</h1>
+            <h1 className='text-3xl font-semibold text-[#31332C]'>Welcome to TaskaGotchi!</h1>
             <p>*beep beep beep*</p>
           </div>
+          {errorMessage && <div className='text-red-600'>{errorMessage}</div>}
+          {successMessage && <div className='text-green-600'>{successMessage}</div>}
           <div>
             <input
               type='email'

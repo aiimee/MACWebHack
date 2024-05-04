@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import img from '../../assets/images/love.png';
+import img from '../../assets/images/loginPic.png';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -33,21 +33,22 @@ const LoginPage = () => {
   return (
     <div className='flex justify-center items-center m-24'>
       <div className='flex flex-row md:flex-row bg-[#FAF4E6] rounded-xl shadow-custom p-6 border-2 border-[#45473F] max-w-5xl w-full'>
-        {errorMessage && <div className='text-red-600'>{errorMessage}</div>}
-        {successMessage && <div className='text-green-600'>{successMessage}</div>}
-        <div className='flex-1'>
+
+        <div className='flex-1 bg-black rounded-lg'>
           <img
             src={img}
             alt='sunset'
-            className='max-w-xs md:max-w-sm lg:max-w-md rounded-xl object-cover pl-10'  
+            className='max-w-xs md:max-w-sm lg:max-w-md rounded-xl object-cover'  
             style={{ flexShrink: 0 }}  
           />
         </div>
-        <div className='flex-1 flex flex-col justify-start p-8'>
+        <div className='flex-1 flex flex-col justify-start p-8 space-y-2 justify-center'>
           <div className='mb-4 text-left'>
-            <h2 className='text-2xl font-bold'>Welcome back...</h2>
+            <h2 className='text-3xl font-semibold pb-3 text-[#31332C]'>Welcome back...</h2>
             <p>Your TaskaGotchi misses you.</p>
           </div>
+          {errorMessage && <div className='text-red-600'>{errorMessage}</div>}
+          {successMessage && <div className='text-green-600'>{successMessage}</div>}
           <form className='space-y-6'>
             <input
               type='text'
