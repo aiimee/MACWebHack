@@ -53,12 +53,14 @@ const TaskPage = () => {
               <button onClick={() => addExperience(50)} className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded shadow-custom'>Add 50 XP</button>
               <button onClick={() => addExperience(100)} className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded shadow-custom'>Add 100 XP</button>
             </div>
-            <LevelBar
-              experiencePoints={experience}
-              currentLevel={level}
-              onExperienceChange={setExperience}
-              onLevelChange={setLevel}
-            />
+            <div>
+              <LevelBar
+                experiencePoints={experience}
+                currentLevel={level}
+                onExperienceChange={setExperience}
+                onLevelChange={setLevel}
+              />
+            </div>
             <div
               className='flex flex-col items-center justify-center my-5 bg-[#B0B0A6] rounded-lg shadow-pet border-4 border-[#45473F]'
               style={{ width: '359px', height: '342px' }}
