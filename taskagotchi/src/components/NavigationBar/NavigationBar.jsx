@@ -23,15 +23,18 @@ const NavigationBar = () => {
         </div>
         <div className="text-2xl underline cursor-pointer text-gray-800">
           {/* TODO: Connect this to the page */}
-          <Link className="text-gray-800" to="/">
-            About Us
+          <Link className="text-gray-800" to="/tasks">
+            Tasks
           </Link>
         </div>
         <div className="text-2xl cursor-pointer text-gray-800">
           {/* TODO: Connect this to the page */}
-          <button className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100">
+          <Link
+            to="/login"
+            className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100"
+          >
             Login/Sign Up
-          </button>
+          </Link>
         </div>
       </div>
     </div>
