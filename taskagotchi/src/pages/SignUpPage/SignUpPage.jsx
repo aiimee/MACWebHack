@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import img from '../../assets/images/activities.jpeg'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import { isValidEmail, isStrongPassword, isVaidPhonenumber } from '../../utils/validationUtils'
 import './SignUpPage.css'
 
@@ -64,7 +63,7 @@ const SignUpPage = () => {
       tasks: [],
       rewardPoints: 0,
       dateJoined: new Date().toISOString()
-    };
+    }
 
     users.push(newUser)
     localStorage.setItem('users', JSON.stringify(users))

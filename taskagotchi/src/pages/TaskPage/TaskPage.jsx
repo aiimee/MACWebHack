@@ -1,44 +1,49 @@
-import NavigationBar from "../../components/NavigationBar/NavigationBar"
-import Pet from "../../components/TasksTab/Pet/Pet"
-import ToDo from "../../components/TasksTab/ToDo/ToDo"
-import UpComingTasks from "../../components/TasksTab/UpComingTasks/UpComingTasks"
+import LevelBar from '../../components/LevelBar/LevelBar'
+import NavigationBar from '../../components/NavigationBar/NavigationBar'
+import Pet from '../../components/TasksTab/Pet/Pet'
+import ToDo from '../../components/TasksTab/ToDo/ToDo'
+import UpComingTasks from '../../components/TasksTab/UpComingTasks/UpComingTasks'
+import Character from '../../components/VirtualPet/Character'
 
 const TaskPage = () => {
+  return (
+    <>
+      <div class='container'>
+        <div class='row'>
 
-    return (
-        <>
-            <NavigationBar />
+          {/* LEFT-HAND BOX */}
+          <div class='col-md-6'>
 
-            <div class="container">
-                <div class="row">
+            {/* UPCOMING TASKS */}
+            <UpComingTasks />
 
-                    {/* LEFT-HAND BOX */}
-                    <div class="col-md-6">
+            {/* TODO TASK */}
+            <ToDo />
+          </div>
 
-                        {/* UPCOMING TASKS */}
-                        <UpComingTasks/>
+          {/* RIGHT-HAND BOX */}
+          <div class='col-md-6'>
+            {/* PETCOMPONENT? ??? */}
+            <Pet />
+          </div>
+        </div>
 
-                        {/* TODO TASK */}
-                        <ToDo/>
-                    </div>
+        <div>
+          {/* EXP is cumulative */}
+          <LevelBar experiencePoints={30}/>
+          <Character />
+        </div>
 
-                    {/* RIGHT-HAND BOX */}
-                    <div class="col-md-6">
-                        {/* PETCOMPONENT? ??? */}
-                        <Pet/>
-                    </div>
-                </div>
+        {/* SHOP */}
+        <div class='row'>
+          <div class='col-md-12 text-center mt-4'>
+            <button class='btn btn-primary btn-lg'>SHOP???</button>
+          </div>
+        </div>
+      </div>
 
-                {/* SHOP */}
-                <div class="row">
-                    <div class="col-md-12 text-center mt-4">
-                        <button class="btn btn-primary btn-lg">SHOP???</button>
-                    </div>
-                </div>
-            </div>
-
-        </>
-    )
+    </>
+  )
 }
 
 export default TaskPage

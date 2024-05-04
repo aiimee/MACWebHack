@@ -65,8 +65,7 @@ const HealthDataTab = () => {
     setSuccessMessage('Saved')
   }
 
-
-  // handle on click cancel 
+  // handle on click cancel
   const handleCancel = () => {
     setAge(user.age || '')
     setSex(user.sex || '')
@@ -78,8 +77,7 @@ const HealthDataTab = () => {
     setEditMode(false)
   }
 
-
-  // diet preferences options value and label 
+  // diet preferences options value and label
   const dietaryPreferencesOptions = [
     { value: 'VEGETARIAN', label: 'Vegetarian' },
     { value: 'VEGAN', label: 'Vegan' },
@@ -195,7 +193,6 @@ const HealthDataTab = () => {
                   )}
             </div>
           </div>
-          
 
           {/* HEALTH GOAL */}
           <div className='row'>
