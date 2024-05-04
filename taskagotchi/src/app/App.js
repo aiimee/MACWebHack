@@ -1,4 +1,3 @@
-// import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoginPage from "../pages/LoginPage/LoginPage";
@@ -7,11 +6,13 @@ import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import HomePage from "../pages/HomePage/HomePage";
 import Footer from "../components/Footer/Footer";
 import TaskPage from "../pages/TaskPage/TaskPage";
+import NavigationBar from "../components/NavigationBar/NavigationBar";
 
 function App() {
   return (
     <div className="App content">
       <Router>
+        <NavigationBar />
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
