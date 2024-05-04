@@ -4,7 +4,7 @@ import egg from '../../assets/images/egg.png'
 
 const NavigationBar = () => {
   return (
-    <div className='w-full fixed top-0 left-0 border-b-8 border-gray-800'>
+    <div className='w-full sticky top-0 left-0 border-b-8 border-gray-800'>
       <div className='flex items-center justify-between bg-[#FAF4E6] py-4 md:px-10 px-7'>
         <div
           className='font-bold text-3xl cursor-pointer text-gray-800'
