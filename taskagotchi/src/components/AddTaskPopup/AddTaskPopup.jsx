@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './AddTaskPopup.css'
 
-const AddTaskPopup = ({ onClose }) => {
+const AddTaskPopup = ({ onClose, onTaskAdded }) => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [priority, setPriority] = useState('')
@@ -52,9 +52,12 @@ const AddTaskPopup = ({ onClose }) => {
     setSuccessMessage('Task added successfully')
     setErrorMessage('')
 
+    // trigger reload data from local storage
+    onTaskAdded();
+
     setTimeout(() => {
       onClose()
-    }, 2000)
+    }, 1000)
   }
 
   const generateUniqueId = (user) => {

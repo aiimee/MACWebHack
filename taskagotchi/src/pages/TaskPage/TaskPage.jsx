@@ -1,49 +1,81 @@
+import React, { useState } from 'react';
 import LevelBar from '../../components/LevelBar/LevelBar'
 import NavigationBar from '../../components/NavigationBar/NavigationBar'
+import Done from '../../components/TasksTab/Done/Done'
 import Pet from '../../components/TasksTab/Pet/Pet'
 import ToDo from '../../components/TasksTab/ToDo/ToDo'
-import UpComingTasks from '../../components/TasksTab/UpComingTasks/UpComingTasks'
 import Character from '../../components/VirtualPet/Character'
+import LateTask from '../../components/TasksTab/LateTask/LateTask'
 
 const TaskPage = () => {
+  const [tasks, setTasks] = useState([]); // Initialize tasks
+  const [selectedTask, setSelectedTask] = useState(null);
+
+  const handleTaskUpdate = (updatedTask) => {
+    const newTasks = tasks.map(task =>
+      task.id === updatedTask.id ? updatedTask : task
+    );
+    setTasks(newTasks);
+    setSelectedTask(null); // Close the popup after updating
+  };
   return (
-    <>
-      <div class='container'>
-        <div class='row'>
+    // MT 20 REMOVE LATER
 
-          {/* LEFT-HAND BOX */}
-          <div class='col-md-6'>
+    <div className="container mx-auto mt-20">
+      <div className="flex flex-col md:flex-row">
+        {/* LEFT-HAND SECTION */}
+        <div className="md:w-1/2 p-4">
+          {/* UPCOMING TASKS */}
+          <div className="bg-white shadow rounded p-4 mb-4">
+            <h2 className="text-xl font-bold mb-2">LATE</h2>
+            <LateTask />
+          </div>
 
-            {/* UPCOMING TASKS */}
-            <UpComingTasks />
-
-            {/* TODO TASK */}
+          {/* TODO TASKS */}
+          <div className="bg-white shadow rounded p-4 mb-4">
+            <h2 className="text-xl font-bold mb-2">To-Do</h2>
             <ToDo />
           </div>
 
-          {/* RIGHT-HAND BOX */}
-          <div class='col-md-6'>
-            {/* PETCOMPONENT? ??? */}
-            <Pet />
+          {/* DONE */}
+          <div className="bg-white shadow rounded p-4">
+            <h2 className="text-xl font-bold mb-2">Done</h2>
+            <Done />
           </div>
+
         </div>
 
-        <div>
-          {/* EXP is cumulative */}
-          <LevelBar experiencePoints={30} />
-          <Character />
-        </div>
 
-        {/* SHOP */}
-        <div class='row'>
-          <div class='col-md-12 text-center mt-4'>
-            <button class='btn btn-primary btn-lg'>SHOP???</button>
+
+        {/* RIGHT-HAND SECTION */}
+        <div className="md:w-1/2 p-4">
+          <div className="bg-white shadow rounded p-4">
+            <Pet />
           </div>
         </div>
       </div>
 
-    </>
-  )
+      {/* BOTTOM SECTION */}
+      <div className="mt-8 p-4">
+        {/* LEVEL BAR */}
+        <div className="mb-4">
+          <LevelBar experiencePoints={30} />
+        </div>
+
+        {/* CHARACTER */}
+        <div className="mb-4">
+          <Character />
+        </div>
+
+        {/* SHOP */}
+        <div className="text-center">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            SHOP
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default TaskPage

@@ -14,6 +14,13 @@ const ToDo = () => {
     }
   }, []);
 
+  const handleTaskSaved = () => {
+    const currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (currentUser && currentUser.tasks) {
+      setTasks(currentUser.tasks);
+    }
+  };
+
   const handleOpenAddTaskPopUp = () => {
     setAddTaskPopUp(true);
   };
@@ -24,20 +31,39 @@ const ToDo = () => {
 
   return (
     <>
-      <div className='bg-white shadow-md rounded-lg mt-4'>
-        <div className='px-4 py-2 border-b border-gray-200'>
-          <h4 className='text-lg font-semibold'>To-Do</h4>
-        </div>
+      <div className="mt-4">
+        <div className="p-4">
+          {/* ADD BUTTON */}
+          <button
+            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full flex items-center justify-center mb-4"
+            onClick={handleOpenAddTaskPopUp}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+              />
+            </svg>
+          </button>
 
-        <div className='p-4'>
-          <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={handleOpenAddTaskPopUp}>Add Task</button>
           {addTaskPopUp && (
-            <AddTaskPopup onClose={handleCloseAddTaskPopUp} />
+            <AddTaskPopup 
+              onClose={handleCloseAddTaskPopUp} 
+              onTaskAdded={handleTaskSaved} 
+              />
           )}
 
           <div className='space-y-4 mt-4'>
             {tasks.filter((task) => !task.completed).map((task) => (
-              <TaskLine key={task.id} task={task} />
+              <TaskLine key={task.id} task={task} onTaskAdded={handleTaskSaved}/>
             ))}
           </div>
 
