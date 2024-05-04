@@ -1,5 +1,9 @@
 import React from "react";
 import bookCharacter from "../../assets/images/BunnyBook.png";
+import speedReading from "../../assets/images/speedReading.png";
+import vacation from "../../assets/images/party.png";
+import sucess from "../../assets/images/sucess.png";
+import strategy from "../../assets/images/strategy.png";
 
 const HomePage = () => {
   return (
@@ -11,7 +15,7 @@ const HomePage = () => {
             <img
               alt="character with book"
               src={bookCharacter}
-              className="size-96 mr-10"
+              className="size-80 pt-5 pb-5 ml-20 mr-20"
             />
             <div className="text-center w-70 ml-35">
               <h1 className="text-2xl font-bold text-gray-800 mb-4">
@@ -31,7 +35,7 @@ const HomePage = () => {
         {/* Second section  */}
         <div className="bg-[#45473F] flex-grow w-full text-white flex justify-center">
           <div className="max-w-screen-lg flex items-center">
-            <div className="text-center w-70 mr-10">
+            <div className="text-center w-70 mr-20">
               <h1 className="text-2xl font-bold text-white-800 mb-4 font-bold">
                 Engage Daily
               </h1>
@@ -40,7 +44,11 @@ const HomePage = () => {
                 Start Your Journey
               </button>
             </div>
-            <img alt="task" src={bookCharacter} className="size-96 mr-10" />
+            <img
+              alt="task"
+              src={speedReading}
+              className="size-80 ml-20 mr-10"
+            />
           </div>
         </div>
         {/* Third section  */}
@@ -48,8 +56,8 @@ const HomePage = () => {
           <div className="max-w-screen-lg flex items-center">
             <img
               alt="character with book"
-              src={bookCharacter}
-              className="size-96 mr-10"
+              src={sucess}
+              className="size-80 pt-5 pb-5 ml-20 mr-20"
             />
             <div className="text-center w-70 ml-35">
               <h1 className="text-2xl font-bold text-gray-800 mb-4">
@@ -68,7 +76,7 @@ const HomePage = () => {
         {/* Fourth section  */}
         <div className="bg-[#45473F] flex-grow w-full text-white flex justify-center">
           <div className="max-w-screen-lg flex items-center">
-            <div className="text-center w-70 mr-10">
+            <div className="text-center w-70 mr-20">
               <h1 className="text-2xl font-bold text-white-800 mb-4 font-bold">
                 Strategize Smartly
               </h1>
@@ -77,7 +85,7 @@ const HomePage = () => {
                 Plan Your Path
               </button>
             </div>
-            <img alt="task" src={bookCharacter} className="size-96 mr-10" />
+            <img alt="task" src={strategy} className="size-80 ml-20 mr-10" />
           </div>
         </div>
         {/* Fifth section  */}
@@ -85,8 +93,8 @@ const HomePage = () => {
           <div className="max-w-screen-lg flex items-center">
             <img
               alt="character with book"
-              src={bookCharacter}
-              className="size-96 mr-10"
+              src={vacation}
+              className="size-80 pt-5 pb-5 ml-20 mr-20"
             />
             <div className="text-center w-70 ml-35">
               <h1 className="text-2xl font-bold text-gray-800 mb-4">
