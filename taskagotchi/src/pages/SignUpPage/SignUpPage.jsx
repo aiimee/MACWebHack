@@ -85,14 +85,13 @@ const SignUpPage = () => {
   return (
     <div className='flex justify-center items-center min-h-screen'>
       <div className='flex flex-row bg-[#FAF4E6] shadow-custom rounded-xl p-6 w-full max-w-5xl border-2 border-[#45473F]'>
-
         {errorMessage && <div className='text-red-600'>{errorMessage}</div>}
         {successMessage && <div className='text-green-600'>{successMessage}</div>}
 
         <div className='flex-1 space-y-6 p-8'>
           <div className='space-y-2'>
-            <h1 className='text-3xl font-semibold'>Welcome to Soil!</h1>
-            <p>Fresh, organic goodness awaits. Let's embark on a journey to wellness together.</p>
+            <h1 className='text-3xl font-semibold'>Welcome to TaskaGotchi!</h1>
+            <p>*beep beep beep*</p>
           </div>
           <div>
             <input
@@ -140,15 +139,6 @@ const SignUpPage = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
-            />
-          </div>
-          <div>
-            <input
-              type='tel'
-              className='form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom'
-              placeholder='Phone Number'
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </div>
           <button
