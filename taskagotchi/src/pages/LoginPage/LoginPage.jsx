@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import img from '../../assets/images/loginPic.png'
@@ -23,18 +24,20 @@ const LoginPage = () => {
     } else {
       setSuccessMessage('')
       setErrorMessage('Invalid email or password')
+
     }
   }
 
   const handleSignupClick = () => {
+
     navigate('/signup')
   }
 
-  return (
-    <div className='flex justify-center items-center m-24'>
-      <div className='flex flex-row md:flex-row bg-[#FAF4E6] rounded-xl shadow-custom p-6 border-2 border-[#45473F] max-w-5xl w-full'>
 
-        <div className='flex-1 bg-black rounded-lg'>
+  return (
+    <div className="flex justify-center items-center m-24">
+      <div className="flex flex-row md:flex-row bg-[#FAF4E6] rounded-xl shadow-custom p-6 border-2 border-[#45473F] max-w-5xl w-full">
+        <div className="flex-1 bg-black rounded-lg">
           <img
             src={img}
             alt='sunset'
@@ -47,36 +50,45 @@ const LoginPage = () => {
             <h2 className='text-3xl font-semibold pb-3 text-[#31332C]'>Welcome back...</h2>
             <p>Your TaskaGotchi misses you.</p>
           </div>
-          {errorMessage && <div className='text-red-600'>{errorMessage}</div>}
-          {successMessage && <div className='text-green-600'>{successMessage}</div>}
-          <form className='space-y-6'>
+          {errorMessage && <div className="text-red-600">{errorMessage}</div>}
+          {successMessage && (
+            <div className="text-green-600">{successMessage}</div>
+          )}
+          <form className="space-y-6">
             <input
-              type='text'
-              className='form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom'
-              placeholder='Email address'
-              id='email'
+              type="text"
+              className="form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom"
+              placeholder="Email address"
+              id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
             <input
-              type='password'
-              className='form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom'
-              placeholder='Password'
-              id='password'
+              type="password"
+              className="form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom"
+              placeholder="Password"
+              id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
             <button
-              type='button'
-              className='bg-[#FAF4E6] hover:bg-orange-600 w-full text-[#45473F] font-bold py-3 px-6 rounded-lg shadow-custom transition duration-300 border-2 border-[#45473F]'
+              type="button"
+              className="bg-[#FAF4E6] hover:bg-[#FFBCF0] w-full text-[#45473F] font-bold py-3 px-6 rounded-lg shadow-custom transition duration-300 border-2 border-[#45473F]"
               onClick={handleLogin}
             >
               Login
             </button>
-            <p className='text-left mt-3'>
-              Don't have an account? Sign up <span onClick={handleSignupClick} className='underline text-orange-600 cursor-pointer'>here</span>.
+            <p className="text-left mt-3">
+              Don't have an account? Sign up{" "}
+              <span
+                onClick={handleSignupClick}
+                className="underline text-orange-600 cursor-pointer"
+              >
+                here
+              </span>
+              .
             </p>
           </form>
         </div>

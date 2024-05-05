@@ -57,6 +57,7 @@ const SignUpPage = () => {
       password,
       tasks: [],
       rewardPoints: 0,
+
       dateJoined: new Date().toISOString()
     }
 
@@ -70,52 +71,59 @@ const SignUpPage = () => {
     }, 2000)
   }
 
+
   const generateUniqueId = (users) => {
     let maxId = 0
     if (users.length > 0) {
+
       maxId = Math.max(...users.map(user => user.id))
+
     }
     return maxId + 1
   }
 
   const handleLoginClick = () => {
-    navigate('/login')
-  }
+
+    navigate("/login");
+  };
 
   return (
-    <div className='flex justify-center items-center m-12'>
-      <div className='flex flex-row bg-[#FAF4E6] shadow-custom rounded-xl p-6 w-full max-w-5xl border-2 border-[#45473F]'>
-
-        <div className='flex-1 space-y-6 p-8'>
-          <div className='space-y-2'>
-            <h1 className='text-3xl font-semibold text-[#31332C]'>Welcome to TaskaGotchi!</h1>
+    <div className="flex justify-center items-center m-12">
+      <div className="flex flex-row bg-[#FAF4E6] shadow-custom rounded-xl p-6 w-full max-w-5xl border-2 border-[#45473F]">
+        <div className="flex-1 space-y-6 p-8">
+          <div className="space-y-2">
+            <h1 className="text-3xl font-semibold text-[#31332C]">
+              Welcome to TaskaGotchi!
+            </h1>
             <p>*beep beep beep*</p>
           </div>
-          {errorMessage && <div className='text-red-600'>{errorMessage}</div>}
-          {successMessage && <div className='text-green-600'>{successMessage}</div>}
+          {errorMessage && <div className="text-red-600">{errorMessage}</div>}
+          {successMessage && (
+            <div className="text-green-600">{successMessage}</div>
+          )}
           <div>
             <input
-              type='email'
-              className='form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom'
-              placeholder='Email address'
+              type="email"
+              className="form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom"
+              placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
-          <div className='flex space-x-4'>
+          <div className="flex space-x-4">
             <input
-              type='text'
-              className='form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom'
-              placeholder='First Name'
+              type="text"
+              className="form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom"
+              placeholder="First Name"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               required
             />
             <input
-              type='text'
-              className='form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom'
-              placeholder='Last Name'
+              type="text"
+              className="form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom"
+              placeholder="Last Name"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               required
@@ -123,9 +131,9 @@ const SignUpPage = () => {
           </div>
           <div>
             <input
-              type='password'
-              className='form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom'
-              placeholder='Password'
+              type="password"
+              className="form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom"
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -133,36 +141,44 @@ const SignUpPage = () => {
           </div>
           <div>
             <input
-              type='password'
-              className='form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom'
-              placeholder='Confirm Password'
+              type="password"
+              className="form-input bg-gray-100 w-full text-lg p-3 rounded-lg border-2 border-[#45473F] shadow-custom"
+              placeholder="Confirm Password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
           </div>
           <button
-            className='bg-[#FAF4E6] hover:bg-orange-600 w-full text-[#45473F] font-bold py-3 px-6 rounded-lg shadow-custom transition duration-300 border-2 border-[#45473F]'
+            className="bg-[#FAF4E6] hover:bg-[#FFBCF0] w-full text-[#45473F] font-bold py-3 px-6 rounded-lg shadow-custom transition duration-300 border-2 border-[#45473F]"
             onClick={handleRegister}
           >
             Sign Up
           </button>
           <p>
-            Want to go back to login? Click <span onClick={handleLoginClick} className='text-orange-600 cursor-pointer underline'>here</span>.
+            Want to go back to login? Click{" "}
+            <span
+              onClick={handleLoginClick}
+              className="text-orange-600 cursor-pointer underline"
+            >
+              here
+            </span>
+            .
           </p>
         </div>
 
-        <div className='flex-1 w-full'>
+        <div className="flex-1 w-full">
           <img
             src={img}
-            alt='sunset'
-            className='inset-0 w-full h-full object-cover rounded-xl p-6'
+            alt="sunset"
+            className="inset-0 w-full h-full object-cover rounded-xl p-6"
           />
         </div>
-
       </div>
     </div>
-  )
-}
 
-export default SignUpPage
+  );
+};
+
+export default SignUpPage;
+

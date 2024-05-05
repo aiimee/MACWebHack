@@ -1,11 +1,14 @@
-import React from 'react'
-import bookCharacter from '../../assets/images/BunnyBook.png'
-import speedReading from '../../assets/images/speedReading.png'
-import vacation from '../../assets/images/party.png'
-import sucess from '../../assets/images/sucess.png'
-import strategy from '../../assets/images/strategy.png'
+
+import React from "react";
+import bookCharacter from "../../assets/images/BunnyBook.png";
+import speedReading from "../../assets/images/speedReading.png";
+import vacation from "../../assets/images/party.png";
+import sucess from "../../assets/images/sucess.png";
+import strategy from "../../assets/images/strategy.png";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
   return (
     <div className='flex flex-col min-h-screen'>
       <div className='flex-grow flex flex-col justify-center'>
@@ -26,9 +29,24 @@ const HomePage = () => {
                 level up, and bring joy to both your life and your virtual
                 buddy!
               </p>
-              <button className='border-2 border-black text-black mt-5 py-2 px-4 rounded shadow-custom opacity-100'>
-                Meet your TaskaGotchi Today
-              </button>
+
+              <div className="mt-5">
+                {loggedInUser ? (
+                  <Link
+                    to="/tasks"
+                    className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100 hover:bg-[#FFBCF0] transition duration-300"
+                  >
+                    Meet your TaskaGotchi Today
+                  </Link>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100 hover:bg-[#FFBCF0] transition duration-300"
+                  >
+                    Meet your TaskaGotchi Today
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -40,9 +58,25 @@ const HomePage = () => {
                 Engage Daily
               </h1>
               <p>Nurture your productivity, one task at a time</p>
-              <button className='border-2 border-[#FAF4E6] text-white mt-5 py-2 px-4 rounded shadow-light opacity-100'>
-                Start Your Journey
-              </button>
+
+              <div className="mt-5">
+                {loggedInUser ? (
+                  <Link
+                    to="/tasks"
+                    className="border-2 border-[#FAF4E6] text-white mt-5 py-2 px-4 rounded shadow-light opacity-100 hover:bg-[#FFBCF0] transition duration-300"
+                  >
+                    Start Your Journey
+                  </Link>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="border-2 border-[#FAF4E6] text-white mt-5 py-2 px-4 rounded shadow-light opacity-100 hover:bg-[#FFBCF0] transition duration-300"
+                  >
+                    Start Your Journey
+                  </Link>
+                )}
+              </div>
+
             </div>
             <img
               alt='task'
@@ -67,9 +101,25 @@ const HomePage = () => {
                 Plant your goals and watch them grow. Every task completed helps
                 your digital companion thrive.
               </p>
-              <button className='border-2 border-black text-black mt-5 py-2 px-4 rounded shadow-custom opacity-100'>
-                Grow With Us
-              </button>
+
+              <div className="mt-5">
+                {loggedInUser ? (
+                  <Link
+                    to="/tasks"
+                    className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100 hover:bg-[#FFBCF0] transition duration-300"
+                  >
+                    Grow with us
+                  </Link>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100 hover:bg-[#FFBCF0] transition duration-300"
+                  >
+                    Grow with us
+                  </Link>
+                )}
+              </div>
+
             </div>
           </div>
         </div>
@@ -81,9 +131,25 @@ const HomePage = () => {
                 Strategize Smartly
               </h1>
               <p>Organise your tasks with intuitive priority settings. </p>
-              <button className='border-2 border-[#FAF4E6] text-white mt-5 py-2 px-4 rounded shadow-light opacity-100'>
-                Plan Your Path
-              </button>
+
+              <div className="mt-5">
+                {loggedInUser ? (
+                  <Link
+                    to="/tasks"
+                    className="border-2 border-[#FAF4E6] text-white mt-5 py-2 px-4 rounded shadow-light opacity-100 hover:bg-[#FFBCF0] transition duration-300"
+                  >
+                    Plan Your Path
+                  </Link>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="border-2 border-[#FAF4E6] text-white mt-5 py-2 px-4 rounded shadow-light opacity-100 hover:bg-[#FFBCF0] transition duration-300"
+                  >
+                    Plan Your Path
+                  </Link>
+                )}
+              </div>
+
             </div>
             <img alt='task' src={strategy} className='size-80 ml-20 mr-10' />
           </div>
@@ -104,9 +170,25 @@ const HomePage = () => {
                 Cross off tasks and collect treasures. Every achievement brings
                 joy not just to you, but also to your digital buddy.
               </p>
-              <button className='border-2 border-black text-black mt-5 py-2 px-4 rounded shadow-custom opacity-100'>
-                Claim Your Rewards
-              </button>
+
+              <div className="mt-5">
+                {loggedInUser ? (
+                  <Link
+                    to="/tasks"
+                    className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100 hover:bg-[#FFBCF0] transition duration-300"
+                  >
+                    Claim Your Rewards
+                  </Link>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100 hover:bg-[#FFBCF0] transition duration-300"
+                  >
+                    Claim Your Rewards
+                  </Link>
+                )}
+              </div>
+
             </div>
           </div>
         </div>
