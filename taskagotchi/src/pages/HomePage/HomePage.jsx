@@ -32,14 +32,14 @@ const HomePage = () => {
                 {loggedInUser ? (
                   <Link
                     to="/tasks"
-                    className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100"
+                    className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100 hover:bg-[#FFBCF0] transition duration-300"
                   >
                     Meet your TaskaGotchi Today
                   </Link>
                 ) : (
                   <Link
                     to="/login"
-                    className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100"
+                    className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100 hover:bg-[#FFBCF0] transition duration-300"
                   >
                     Meet your TaskaGotchi Today
                   </Link>
@@ -60,14 +60,14 @@ const HomePage = () => {
                 {loggedInUser ? (
                   <Link
                     to="/tasks"
-                    className="border-2 border-[#FAF4E6] text-white mt-5 py-2 px-4 rounded shadow-light opacity-100"
+                    className="border-2 border-[#FAF4E6] text-white mt-5 py-2 px-4 rounded shadow-light opacity-100 hover:bg-[#FFBCF0] transition duration-300"
                   >
                     Start Your Journey
                   </Link>
                 ) : (
                   <Link
                     to="/login"
-                    className="border-2 border-[#FAF4E6] text-white mt-5 py-2 px-4 rounded shadow-light opacity-100"
+                    className="border-2 border-[#FAF4E6] text-white mt-5 py-2 px-4 rounded shadow-light opacity-100 hover:bg-[#FFBCF0] transition duration-300"
                   >
                     Start Your Journey
                   </Link>
@@ -101,14 +101,14 @@ const HomePage = () => {
                 {loggedInUser ? (
                   <Link
                     to="/tasks"
-                    className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100"
+                    className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100 hover:bg-[#FFBCF0] transition duration-300"
                   >
                     Grow with us
                   </Link>
                 ) : (
                   <Link
                     to="/login"
-                    className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100"
+                    className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100 hover:bg-[#FFBCF0] transition duration-300"
                   >
                     Grow with us
                   </Link>
@@ -129,14 +129,14 @@ const HomePage = () => {
                 {loggedInUser ? (
                   <Link
                     to="/tasks"
-                    className="border-2 border-[#FAF4E6] text-white mt-5 py-2 px-4 rounded shadow-light opacity-100"
+                    className="border-2 border-[#FAF4E6] text-white mt-5 py-2 px-4 rounded shadow-light opacity-100 hover:bg-[#FFBCF0] transition duration-300"
                   >
                     Plan Your Path
                   </Link>
                 ) : (
                   <Link
                     to="/login"
-                    className="border-2 border-[#FAF4E6] text-white mt-5 py-2 px-4 rounded shadow-light opacity-100"
+                    className="border-2 border-[#FAF4E6] text-white mt-5 py-2 px-4 rounded shadow-light opacity-100 hover:bg-[#FFBCF0] transition duration-300"
                   >
                     Plan Your Path
                   </Link>
@@ -166,14 +166,14 @@ const HomePage = () => {
                 {loggedInUser ? (
                   <Link
                     to="/tasks"
-                    className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100"
+                    className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100 hover:bg-[#FFBCF0] transition duration-300"
                   >
                     Claim Your Rewards
                   </Link>
                 ) : (
                   <Link
                     to="/login"
-                    className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100"
+                    className="border-2 border-black text-black py-2 px-4 rounded shadow-custom opacity-100 hover:bg-[#FFBCF0] transition duration-300"
                   >
                     Claim Your Rewards
                   </Link>
