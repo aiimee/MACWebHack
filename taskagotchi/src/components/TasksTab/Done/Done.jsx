@@ -4,7 +4,7 @@ import TaskLine from '../../TaskLine/TaskLine'
 import { TaskUpdateContext } from '../../TaskUpdateContext/TaskUpdateContext'
 const Done = () => {
   const { addExperience } = useExperience()
-  const { updateFlag } = useContext(TaskUpdateContext) // Listens to task completion changes
+  const { updateFlag } = useContext(TaskUpdateContext) 
   const [tasks, setTasks] = useState([])
 
   // Fetch and update completed tasks from localStorage
@@ -21,7 +21,7 @@ const Done = () => {
   }, [updateFlag]) // Rerun this effect if updateFlag changes
 
   return (
-    <div className='bg-transparent border-black rounded-xl p-4 mb-10 border-2'>
+    <div className='bg-transparent border-black rounded-xl p-4 mb-10 border-2 shadow-custom'>
       <div className='task-list'>
         {tasks.map((task) => (
           <TaskLine key={task.id} task={task} onTaskAdded={() => addExperience(20)} />

@@ -1,93 +1,67 @@
-import React, { useState, useContext } from 'react'
-import DetailTaskPopup from '../DetailTaskPopup/DetailTaskPopup'
-import { useExperience } from '../ExperienceContext/ExperienceProvider'
-import { TaskUpdateContext } from '../TaskUpdateContext/TaskUpdateContext'
-import './TaskLine.css'
+import React, { useState, useContext } from 'react';
+import DetailTaskPopup from '../DetailTaskPopup/DetailTaskPopup';
+import { useExperience } from '../ExperienceContext/ExperienceProvider';
+import { TaskUpdateContext } from '../TaskUpdateContext/TaskUpdateContext';
+import './TaskLine.css';
 
 const TaskLine = ({ task, onTaskAdded }) => {
-  const [isHovered, setIsHovered] = useState(false)
-  const [detailTaskPopUp, setDetailTaskPopUp] = useState(false)
-  const [selectedTask, setSelectedTask] = useState(null)
-  const { triggerUpdate } = useContext(TaskUpdateContext)
+  const [isHovered, setIsHovered] = useState(false);
+  const [detailTaskPopUp, setDetailTaskPopUp] = useState(false);
+  const [selectedTask, setSelectedTask] = useState(null);
+  const { triggerUpdate } = useContext(TaskUpdateContext);
+  const { addExperience } = useExperience();
 
-  const { addExperience } = useExperience() // Using the context to manage experience pooints
-
-  // Function to get color based on task priority
   const getTaskPriorityColor = (priority) => {
     switch (priority) {
-      case 'high':
-        return '#f27c7c'
-      case 'medium':
-        return '#93aaff'
-      case 'low':
-        return '#a8ff93'
-      default:
-        return 'inherit'
+      case 'high': return '#f27c7c';
+      case 'medium': return '#93aaff';
+      case 'low': return '#a8ff93';
+      default: return 'inherit';
     }
-  }
+  };
 
   const handleOpenDetailTaskPopUp = () => {
-    setDetailTaskPopUp(true)
-    setSelectedTask(task)
-  }
+    setDetailTaskPopUp(true);
+    setSelectedTask(task);
+  };
 
   const handleCloseDetailTaskPopUp = () => {
-    setDetailTaskPopUp(false)
-    setSelectedTask(null)
-  }
+    setDetailTaskPopUp(false);
+    setSelectedTask(null);
+  };
 
   const handleCheckboxChange = (checked) => {
-    const currentUser = JSON.parse(localStorage.getItem('loggedInUser'))
-    const users = JSON.parse(localStorage.getItem('users')) || []
-
-    if (checked && !task.completed) {
+    const currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (currentUser && currentUser.tasks) {
       const updatedTasks = currentUser.tasks.map(t =>
         t.id === task.id ? { ...t, completed: true } : t
-      )
+      );
 
-      const expAmount = task.priority === 'high' ? 10 : task.priority === 'medium' ? 5 : 2
-      addExperience(expAmount)
+      const expAmount = task.priority === 'high' ? 10 : task.priority === 'medium' ? 5 : 2;
+      addExperience(expAmount);
 
-      currentUser.tasks = updatedTasks
-      localStorage.setItem('loggedInUser', JSON.stringify(currentUser))
+      currentUser.tasks = updatedTasks;
+      localStorage.setItem('loggedInUser', JSON.stringify(currentUser));
 
-      const updatedUsers = users.map(user =>
-        user.id === currentUser.id ? currentUser : user
-      )
-      localStorage.setItem('users', JSON.stringify(updatedUsers))
-
-      onTaskAdded() // Notify parent component to refresh task list
-      triggerUpdate() // RERENDER THEE DONE LIST
+      onTaskAdded();  // This should re-fetch and filter tasks in the parent component
+      triggerUpdate();  // FINNALLY global update signal is sent
     }
-  }
-
-  const handleTaskDeleted = (taskId) => {
-    onTaskAdded() // Handle task deletion effects idk
-  }
-
-  const handleTaskSaved = (updatedTask) => {
-    onTaskAdded() // Handle task update effects skdsdkjfh
-  }
+  };
 
   return (
     <div className='task-line' onClick={handleOpenDetailTaskPopUp}>
       {detailTaskPopUp && (
         <DetailTaskPopup
           onClose={handleCloseDetailTaskPopUp}
-          onTaskSaved={handleTaskSaved}
-          onTaskDeleted={handleTaskDeleted}
+          onTaskSaved={() => { onTaskAdded(); triggerUpdate(); }}
+          onTaskDeleted={() => { onTaskAdded(); triggerUpdate(); }}
           selectedTask={selectedTask}
         />
       )}
-      <div
-        className='task-checkbox'
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onClick={(e) => {
-          e.stopPropagation()
-          handleCheckboxChange(!task.completed)
-        }}
-      >
+      <div className='task-checkbox' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={(e) => {
+        e.stopPropagation();
+        handleCheckboxChange(!task.completed);
+      }}>
         {(isHovered || task.completed) && <span className='text-4xl'>&#10003;</span>}
       </div>
       <div className='task-details'>
@@ -95,17 +69,15 @@ const TaskLine = ({ task, onTaskAdded }) => {
         <div className='task-info'>
           <div className='task-end-date'>due date: {task.endDate}</div>
           <div className='flex justify-end'>
-            <div
-              className='task-priority inline-block px-2 py-1 rounded text-white'
-              style={{ backgroundColor: getTaskPriorityColor(task.priority) }}
-            >
+            <div className='task-priority inline-block px-2 py-1 rounded text-white' style={{ backgroundColor: getTaskPriorityColor(task.priority) }}>
               {task.priority}
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TaskLine
+export default TaskLine;
+

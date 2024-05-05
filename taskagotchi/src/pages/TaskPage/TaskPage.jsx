@@ -62,6 +62,7 @@ const TaskPage = () => {
         {/* Right side pet */}
         <div className='md:w-auto m-10'>
           <div className='container flex flex-col items-center justify-center'>
+            HACKS
             <div className='row space-x-4 mb-4'>
               <button onClick={() => addExperience(10)} className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded shadow-custom'>Add 10 XP</button>
               <button onClick={() => addExperience(50)} className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded shadow-custom'>Add 50 XP</button>
