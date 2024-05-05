@@ -6,7 +6,7 @@ Welcome to Taskagotchi, the retro-inspired virtual pet that's here to make your 
 
 To start using Taskagotchi, follow these simple steps:
 
-1. Clone the repository: `git clone https://github.com/404ERROR/taskagotchi.git`
+1. Clone the repository: `git clone https://github.com/aiimee/MACWebHack.git`
 2. Navigate to the project directory: `cd taskagotchi`
 3. Install the necessary dependencies: `npm install`
 4. Start the application: `npm start`
