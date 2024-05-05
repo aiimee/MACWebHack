@@ -40,8 +40,14 @@ const TaskPage = () => {
     }, 2000)
   }
 
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  const userName = loggedInUser ? loggedInUser.firstName : "Guest";
+
   return (
-    <div className='container mx-auto flex flex-col  justify-center items-center'>
+    <div className="container mx-auto flex flex-col  justify-center items-center">
+      <h1 className="text-5xl font-bold text-gray-800 mt-10 mb-10">
+        Welcome {userName}!
+      </h1>
       {/* Left side todolist */}
       <div className='flex flex-col md:flex-row'>
         <div className='md:1/3 m-10'>
@@ -75,8 +81,8 @@ const TaskPage = () => {
               onLevelChange={setLevel}
             />
             <div
-              className='flex flex-col items-center justify-center my-5 bg-[#FAF4E6] rounded-lg shadow-pet border-4 border-[#45473F]'
-              style={{ width: '359px', height: '342px' }}
+              className="flex flex-col items-center justify-center my-5 bg-[#FAF4E6] rounded-lg shadow-pet border-4 border-[#45473F]"
+              style={{ width: "359px", height: "342px" }}
             >
               <CharacterSheet
                 character='character2'
@@ -87,7 +93,12 @@ const TaskPage = () => {
                 showHeart={showHeart}
               />
             </div>
-            <button onClick={toggleHeartAnimation} className='border-2 border-[#45473F] text-black py-2 px-4 rounded-lg shadow-custom opacity-100 hover:bg-[#FFBCF0]'>🖤</button>
+            <button
+              onClick={toggleHeartAnimation}
+              className="border-2 border-[#45473F] text-black py-2 px-4 rounded-lg shadow-custom opacity-100 hover:bg-[#FFBCF0]"
+            >
+              🖤
+            </button>
           </div>
         </div>
       </div>
