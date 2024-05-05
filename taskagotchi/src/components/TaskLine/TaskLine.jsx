@@ -35,32 +35,31 @@ const TaskLine = ({ task, onTaskAdded }) => {
   }
 
   const handleBoxClick = () => {
-    const currentUser = JSON.parse(localStorage.getItem('loggedInUser'))
-    const users = JSON.parse(localStorage.getItem('users')) || []
+    const currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    const users = JSON.parse(localStorage.getItem('users')) || [];
 
-    if (currentUser) {
+    if (currentUser && !task.completed) {
       const updatedTasks = currentUser.tasks.map((t) =>
         t.id === task.id ? { ...t, completed: true } : t
-      )
+      );
 
-      // adding the score to reward points
-      const taskScore = task.score
-      currentUser.rewardPoints = currentUser.rewardPoints + taskScore
+      // Update the score to reward points
+      const expAmount = task.priority === 'high' ? 10 : task.priority === 'medium' ? 5 : 2;
+      const currentExp = Number(localStorage.getItem('experience') || 0);
+      const updatedExp = currentExp + expAmount;
+      localStorage.setItem('experience', updatedExp);
 
-      currentUser.tasks = updatedTasks
+      currentUser.tasks = updatedTasks;
       const updatedUsers = users.map((user) =>
         user.id === currentUser.id ? currentUser : user
-      )
+      );
 
-      localStorage.setItem('loggedInUser', JSON.stringify(currentUser))
-      localStorage.setItem('users', JSON.stringify(updatedUsers))
+      localStorage.setItem('loggedInUser', JSON.stringify(currentUser));
+      localStorage.setItem('users', JSON.stringify(updatedUsers));
 
-      // trigger reload data from local storage
-      // to make it disapear in todo list after user tick
-      onTaskAdded()
+      onTaskAdded();
     }
-    window.location.reload()
-  }
+  };
 
   const handleTaskDeleted = (taskId) => {
     const currentUser = JSON.parse(localStorage.getItem('loggedInUser'))

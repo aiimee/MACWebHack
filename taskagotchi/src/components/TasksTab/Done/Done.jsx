@@ -21,7 +21,7 @@ const Done = () => {
   return (
     <>
       {/* UPCOMING TASKS */}
-      <div class='bg-transparent border-black rounded-xl p-4 mb-10 border-2 shadow-custom'>
+      <div class='bg-transparent border-black rounded-xl p-4 mb-10 border-2'>
         <div className='task-list'>
           {tasks.map((task) => (
             <TaskLine key={task.id} task={task} onTaskDone={handleTaskDone} />
