@@ -32,22 +32,22 @@ If you encounter any issues or need to clear your local storage, follow these st
 Here, you can include GIFs or screenshots demonstrating each page of the Taskagotchi application. Feel free to add them below:
 
 ### Homepage
-![Homepage GIF](./assets/gif/Homepage.gif)
+![Homepage GIF](./taskagotchi/src/assets/gif/Homepage.gif)
 
 ### Login Page
-![Login GIF](./assets/gif/Login.gif)
+![Login GIF](./taskagotchi/src/assets/gif/Login.gif)
 
 ### Signup Page
-![Signup GIF](./assets/gif/Signup.gif)
+![Signup GIF](./taskagotchi/src/assets/gif/Signup.gif)
 
 ### Task Creation
-![Addtask GIF](./assets/gif/Addtask.gif)
+![Addtask GIF](./taskagotchi/src/assets/gif/Addtask.gif)
 
 ### Task Page
-![TaskPage GIF](./assets/gif/TaskPage.gif)
+![TaskPage GIF](./taskagotchi/src/assets/gif/TaskPage.gif)
 
 ### Pet Evolution
-[Insert GIF or screenshot of the pet evolution feature]
+![Evolve](./taskagotchi/src/assets/gif/Evolve.gif)
 
 
 ## License
