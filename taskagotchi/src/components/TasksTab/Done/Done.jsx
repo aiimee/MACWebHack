@@ -1,35 +1,36 @@
-import { useState, useEffect } from 'react'
-
-import TaskLine from '../../TaskLine/TaskLine'
-
+import React, { useState, useEffect, useContext } from 'react';
+import { useExperience } from '../../ExperienceContext/ExperienceProvider';
+import TaskLine from '../../TaskLine/TaskLine';
+import { TaskUpdateContext } from '../../TaskUpdateContext/TaskUpdateContext';
 const Done = () => {
-  const [tasks, setTasks] = useState([])
+  const { addExperience } = useExperience();
+  const { updateFlag } = useContext(TaskUpdateContext); // Listens to task completion changes
+  const [tasks, setTasks] = useState([]);
 
+  // Fetch and update completed tasks from localStorage
   useEffect(() => {
-    const currentUser = JSON.parse(localStorage.getItem('loggedInUser'))
-    if (currentUser && currentUser.tasks) {
-      setTasks(currentUser.tasks.filter((task) => task.completed))
-    }
-  }, [])
+    const fetchTasks = () => {
+      const currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
+      if (currentUser && currentUser.tasks) {
+        const completedTasks = currentUser.tasks.filter(task => task.completed);
+        setTasks(completedTasks);
+      }
+    };
 
-  const handleTaskDone = () => {
-    const currentUser = JSON.parse(localStorage.getItem('loggedInUser'))
-    if (currentUser && currentUser.tasks) {
-      setTasks(currentUser.tasks.filter((task) => task.completed))
-    }
-  }
+    fetchTasks();
+  }, [updateFlag]); // Rerun this effect if updateFlag changes
+
   return (
-    <>
-      {/* UPCOMING TASKS */}
-      <div class='bg-transparent border-black rounded-xl p-4 mb-10 border-2'>
-        <div className='task-list'>
-          {tasks.map((task) => (
-            <TaskLine key={task.id} task={task} onTaskDone={handleTaskDone} />
-
-          ))}
-        </div>
+    <div className='bg-transparent border-black rounded-xl p-4 mb-10 border-2'>
+      <div className='task-list'>
+        {tasks.map((task) => (
+          <TaskLine key={task.id} task={task} onTaskAdded={() => addExperience(20)} />
+        ))}
       </div>
-    </>
-  )
-}
-export default Done
+    </div>
+  );
+};
+
+export default Done;
+
+

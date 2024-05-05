@@ -4,10 +4,11 @@ import Done from '../../components/TasksTab/Done/Done';
 import ToDo from '../../components/TasksTab/ToDo/ToDo';
 import LateTask from '../../components/TasksTab/LateTask/LateTask';
 import CharacterSheet from '../../components/VirtualPet/Characters/Character1';
+import { useExperience } from '../../components/ExperienceContext/ExperienceProvider';
 
 const TaskPage = () => {
-  const [experience, setExperience] = useState(() => Number(localStorage.getItem('experience') || 0));
-  const [level, setLevel] = useState(() => Number(localStorage.getItem('level') || 1));
+  const { experience, setExperience, level, setLevel, addExperience } = useExperience();
+
   const [showHeart, setShowHeart] = useState(false);
 
   // Sync state with local storage changes
@@ -31,10 +32,6 @@ const TaskPage = () => {
     localStorage.setItem('experience', experience);
     localStorage.setItem('level', level);
   }, [experience, level]);
-
-  const addExperience = (amount) => {
-    setExperience(prevExperience => prevExperience + amount);
-  };
 
   const toggleHeartAnimation = () => {
     setShowHeart(true);
@@ -71,7 +68,6 @@ const TaskPage = () => {
               <button onClick={() => addExperience(100)} className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded shadow-custom'>Add 100 XP</button>
             </div>
             <LevelBar
-                key={experience} // force rerender lolol
                 experiencePoints={experience}
                 currentLevel={level}
                 onExperienceChange={setExperience}
@@ -82,7 +78,6 @@ const TaskPage = () => {
               style={{ width: '359px', height: '342px' }}
             >
               <CharacterSheet
-                key={level} // force rerender hahahah
                 character='character2'
                 experiencePoints={experience}
                 currentLevel={level}
