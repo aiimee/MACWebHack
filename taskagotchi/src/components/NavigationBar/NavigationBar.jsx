@@ -35,13 +35,23 @@ const NavigationBar = () => {
           )}
         </div>
         <div className='text-2 cursor-pointer text-gray-800'>
-          <Link
-            to='/login'
-            className='border-2 border-[#45473F] text-black py-2 px-4 rounded-lg shadow-custom opacity-100 hover:bg-[#FFBCF0] transition duration-300'
-          >
-            Login/Sign Up
-          </Link>
+          {!loggedInUser ? (
+            <Link
+              to='/login'
+              className='border-2 border-[#45473F] text-black py-2 px-4 rounded-lg shadow-custom opacity-100 hover:bg-[#FFBCF0] transition duration-300'
+            >
+              Login/Sign Up
+            </Link>
+          ) : (
+            <Link
+              className='border-2 border-[#45473F] text-black py-2 px-4 rounded-lg shadow-custom opacity-100 hover:bg-[#FFBCF0] transition duration-300'
+            >
+              {loggedInUser.firstName}
+            </Link>
+          )}
         </div>
+
+
       </div>
     </div>
   );
