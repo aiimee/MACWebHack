@@ -33,7 +33,7 @@ Here, you can include GIFs or screenshots demonstrating each page of the Taskago
 
 ## Demonstration Video
 
-Check out this demo video of the Taskagotchi application:
+Check out this demo video of the Taskagotchi application (https://www.youtube.com/@onimmy):
 
 [![Taskagotchi Demo]](https://www.youtube.com/@onimmy)
 
