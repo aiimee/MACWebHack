@@ -33,9 +33,9 @@ Here, you can include GIFs or screenshots demonstrating each page of the Taskago
 
 ## Demonstration Video
 
-Check out this demo video of the Taskagotchi application (https://www.youtube.com/@onimmy):
+Check out this demo video of the Taskagotchi application (https://www.youtube.com/watch?v=Mq4Cu2I46VU):
 
-[![Taskagotchi Demo]](https://www.youtube.com/@onimmy)
+[![Taskagotchi Demo]](https://www.youtube.com/watch?v=Mq4Cu2I46VU)
 
 ### Homepage
 ![Homepage GIF](./taskagotchi/src/assets/gif/Homepage.gif)
