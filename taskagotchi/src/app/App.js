@@ -8,14 +8,14 @@ import TaskPage from '../pages/TaskPage/TaskPage'
 import NavigationBar from '../components/NavigationBar/NavigationBar'
 import { ExperienceProvider } from '../components/ExperienceContext/ExperienceProvider'
 import { TaskUpdateProvider } from '../components/TaskUpdateContext/TaskUpdateContext'
-function App() {
+function App () {
   return (
     <ExperienceProvider>
       <TaskUpdateProvider>
         <div className='App flex flex-col min-h-screen'>
           <Router>
             <NavigationBar />
-            <div className="flex-grow">
+            <div className='flex-grow'>
               <Routes>
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/signup' element={<SignupPage />} />
@@ -31,6 +31,5 @@ function App() {
     </ExperienceProvider>
   )
 }
-
 
 export default App

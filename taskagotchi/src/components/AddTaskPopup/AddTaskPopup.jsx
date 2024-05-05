@@ -1,28 +1,28 @@
-import { useState, useEffect } from 'react';
-import './AddTaskPopup.css';
+import { useState, useEffect } from 'react'
+import './AddTaskPopup.css'
 
 const AddTaskPopup = ({ onClose, onTaskAdded }) => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [priority, setPriority] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [reward, setReward] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [priority, setPriority] = useState('')
+  const [startDate, setStartDate] = useState('')
+  const [endDate, setEndDate] = useState('')
+  const [reward, setReward] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
-    const users = JSON.parse(localStorage.getItem('users')) || [];
+    e.preventDefault()
+    const currentUser = JSON.parse(localStorage.getItem('loggedInUser'))
+    const users = JSON.parse(localStorage.getItem('users')) || []
 
     if (!title || !description || !priority || !startDate || !endDate) {
-      setErrorMessage('All fields are required');
-      setSuccessMessage('');
-      return;
+      setErrorMessage('All fields are required')
+      setSuccessMessage('')
+      return
     }
 
-    const taskScore = Math.min(20 + Math.floor(description.length / 10), 40);
+    const taskScore = Math.min(20 + Math.floor(description.length / 10), 40)
     const newTask = {
       id: generateUniqueId(currentUser),
       title,
@@ -32,26 +32,26 @@ const AddTaskPopup = ({ onClose, onTaskAdded }) => {
       completed: false,
       startDate,
       endDate,
-      reward,
-    };
+      reward
+    }
 
     if (currentUser) {
-      currentUser.tasks = [...currentUser.tasks, newTask];
-      const updatedUsers = users.map(user => user.id === currentUser.id ? currentUser : user);
-      localStorage.setItem('loggedInUser', JSON.stringify(currentUser));
-      localStorage.setItem('users', JSON.stringify(updatedUsers));
-      onTaskAdded(); // Notify parent component to update the state
-      setSuccessMessage('Task added successfully');
-      setErrorMessage('');
-      setTimeout(onClose, 1000); // Close popup after a delay
+      currentUser.tasks = [...currentUser.tasks, newTask]
+      const updatedUsers = users.map(user => user.id === currentUser.id ? currentUser : user)
+      localStorage.setItem('loggedInUser', JSON.stringify(currentUser))
+      localStorage.setItem('users', JSON.stringify(updatedUsers))
+      onTaskAdded() // Notify parent component to update the state
+      setSuccessMessage('Task added successfully')
+      setErrorMessage('')
+      setTimeout(onClose, 1000) // Close popup after a delay
     } else {
-      setErrorMessage('No current user found');
+      setErrorMessage('No current user found')
     }
-  };
+  }
 
   const generateUniqueId = (currentUser) => {
-    return currentUser.tasks.reduce((maxId, task) => Math.max(maxId, task.id), 0) + 1;
-  };
+    return currentUser.tasks.reduce((maxId, task) => Math.max(maxId, task.id), 0) + 1
+  }
 
   return (
     <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 popup-overlay'>
@@ -83,8 +83,8 @@ const AddTaskPopup = ({ onClose, onTaskAdded }) => {
             className='w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500'
           />
 
-                    {/* Description */}
-                    <div className='mb-4'>
+          {/* Description */}
+          <div className='mb-4'>
             <label htmlFor='description' className='block text-gray-700 font-semibold mb-2'>
               Description:
             </label>
@@ -164,7 +164,7 @@ const AddTaskPopup = ({ onClose, onTaskAdded }) => {
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AddTaskPopup;
+export default AddTaskPopup

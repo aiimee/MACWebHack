@@ -22,15 +22,15 @@ const NavigationBar = () => {
           </span>
         </div>
 
-        <div className="text-2xl underline cursor-pointer text-gray-800 justify-center font-bold">
-          <Link className="text-gray-800" to="/tasks">
+        <div className='text-2xl underline cursor-pointer text-gray-800 justify-center font-bold'>
+          <Link className='text-gray-800' to='/tasks'>
             Tasks
           </Link>
         </div>
-        <div className="text-2 cursor-pointer text-gray-800">
+        <div className='text-2 cursor-pointer text-gray-800'>
           <Link
-            to="/login"
-            className="border-2 border-[#45473F] text-black py-2 px-4 rounded-lg shadow-custom opacity-100 hover:bg-[#FFBCF0] transition duration-300"
+            to='/login'
+            className='border-2 border-[#45473F] text-black py-2 px-4 rounded-lg shadow-custom opacity-100 hover:bg-[#FFBCF0] transition duration-300'
           >
 
             Login/Sign Up

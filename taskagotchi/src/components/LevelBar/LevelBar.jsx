@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 
 const LevelBar = ({ experiencePoints, onExperienceChange, currentLevel, onLevelChange }) => {
   const experienceToNextLevel = 100 // This could be dynamic or fetched from a settings context
