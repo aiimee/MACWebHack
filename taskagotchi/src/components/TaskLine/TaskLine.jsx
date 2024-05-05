@@ -1,8 +1,13 @@
-import { useState } from 'react'
-import './TaskLine.css'
+import { useState, useEffect } from 'react'
 
-const TaskLine = ({ task }) => {
+import './TaskLine.css'
+import DetailTaskPopup from '../DetailTaskPopup/DetailTaskPopup'
+
+const TaskLine = ({ task, onTaskAdded }) => {
   const [isHovered, setIsHovered] = useState(false)
+  const [detailTaskPopUp, setDetailTaskPopUp] = useState(false)
+  const [selectedTask, setSelectedTask] = useState(null)
+  const [tasks, setTasks] = useState([])
 
   const getTaskPriorityColor = (priority) => {
     switch (priority) {
@@ -17,44 +22,148 @@ const TaskLine = ({ task }) => {
     }
   }
 
+  const handleOpenDetailTaskPopUp = () => {
+    // console.log("opening");
+    setDetailTaskPopUp(true)
+    setSelectedTask(task)
+  }
+
+  const handleCloseDetailTaskPopUp = () => {
+    // console.log("closing");
+    setDetailTaskPopUp(false)
+    setSelectedTask(null)
+  }
+
   const handleBoxClick = () => {
+    const currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+
+    if (currentUser && !task.completed) {
+      const updatedTasks = currentUser.tasks.map((t) =>
+        t.id === task.id ? { ...t, completed: true } : t
+      );
+
+      // Update the score to reward points
+      const expAmount = task.priority === 'high' ? 10 : task.priority === 'medium' ? 5 : 2;
+      const currentExp = Number(localStorage.getItem('experience') || 0);
+      const updatedExp = currentExp + expAmount;
+      localStorage.setItem('experience', updatedExp);
+
+      currentUser.tasks = updatedTasks;
+      const updatedUsers = users.map((user) =>
+        user.id === currentUser.id ? currentUser : user
+      );
+
+      localStorage.setItem('loggedInUser', JSON.stringify(currentUser));
+      localStorage.setItem('users', JSON.stringify(updatedUsers));
+
+      onTaskAdded();
+    }
+  };
+
+  const handleTaskDeleted = (taskId) => {
     const currentUser = JSON.parse(localStorage.getItem('loggedInUser'))
     const users = JSON.parse(localStorage.getItem('users')) || []
 
-    if (currentUser) {
-      const updatedTasks = currentUser.tasks.map((t) =>
-        t.id === task.id ? { ...t, completed: true } : t
-      )
-      currentUser.tasks = updatedTasks
-      console.log(currentUser.tasks)
-      const updatedUsers = users.map((user) =>
-        user.id === currentUser.id ? currentUser : user
-      )
+    if (currentUser && currentUser.tasks) {
+      const updatedTasks = currentUser.tasks.filter((task) => task.id !== taskId)
+      const updatedUser = { ...currentUser, tasks: updatedTasks }
+      localStorage.setItem('loggedInUser', JSON.stringify(updatedUser))
+      setTasks(updatedTasks)
+      onTaskAdded()
 
-      localStorage.setItem('loggedInUser', JSON.stringify(currentUser))
-      localStorage.setItem('users', JSON.stringify(updatedUsers))
+      // Update the users array in the local storage
+      const userIndex = users.findIndex((user) => user.id === currentUser.id)
+      if (userIndex !== -1) {
+        const updatedUsers = [
+          ...users.slice(0, userIndex),
+          updatedUser,
+          ...users.slice(userIndex + 1)
+        ]
+        localStorage.setItem('users', JSON.stringify(updatedUsers))
+      }
+    }
+
+    setDetailTaskPopUp(false)
+    setSelectedTask(null)
+    window.location.reload()
+  }
+
+  const handleTaskSaved = (updatedTask) => {
+    const currentUser = JSON.parse(localStorage.getItem('loggedInUser'))
+    const users = JSON.parse(localStorage.getItem('users')) || []
+
+    // check login
+    if (currentUser && currentUser.tasks) {
+      setTasks(currentUser.tasks)
+    }
+
+    const taskIndex = tasks.findIndex((task) => task.id === updatedTask.id)
+    if (taskIndex !== -1) {
+      // create a new array with the updated task
+      const updatedTasks = [
+        ...tasks.slice(0, taskIndex),
+        updatedTask,
+        ...tasks.slice(taskIndex + 1)
+      ]
+
+      // update the tasks state
+      setTasks(updatedTasks)
+
+      // update the tasks in the loggedInUser object
+      const updatedUser = { ...currentUser, tasks: updatedTasks }
+      localStorage.setItem('loggedInUser', JSON.stringify(updatedUser))
+
+      // update the users array in the local storage
+      const userIndex = users.findIndex((user) => user.id === currentUser.id)
+      if (userIndex !== -1) {
+        const updatedUsers = [
+          ...users.slice(0, userIndex),
+          updatedUser,
+          ...users.slice(userIndex + 1)
+        ]
+        localStorage.setItem('users', JSON.stringify(updatedUsers))
+      }
     }
   }
 
   return (
     <div
       className='task-line'
+      onClick={handleOpenDetailTaskPopUp}
     >
+      {/* PopUp onclick */}
+      {detailTaskPopUp && (
+        <DetailTaskPopup
+          onClose={handleCloseDetailTaskPopUp}
+          onTaskSaved={handleTaskSaved}
+          onTaskDeleted={handleTaskDeleted}
+          selectedTask={selectedTask}
+        />
+
+      )}
+
+      {/* check box */}
       <div
         className='task-checkbox'
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        onClick={handleBoxClick}
+        onClick={task.completed ? undefined : handleBoxClick}
       >
-        {isHovered && <span>&#10003;</span>}
+        {(isHovered || task.completed) && <span className='text-4xl'>&#10003;</span>}
       </div>
 
       <div className='task-details'>
         <div className='task-title'>{task.title.length > 20 ? `${task.title.slice(0, 20)}...` : task.title}</div>
         <div className='task-info'>
-          <div className='task-end-date'>{task.endDate}</div>
-          <div className='task-priority' style={{ backgroundColor: getTaskPriorityColor(task.priority) }}>
-            {task.priority}
+          <div className='task-end-date'>due date: {task.endDate}</div>
+          <div className='flex justify-end'>
+            <div
+              className='task-priority inline-block px-2 py-1 rounded text-white'
+              style={{ backgroundColor: getTaskPriorityColor(task.priority) }}
+            >
+              {task.priority}
+            </div>
           </div>
         </div>
       </div>
