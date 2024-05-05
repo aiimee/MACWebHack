@@ -32,6 +32,7 @@ const TaskLine = ({ task, onTaskAdded }) => {
 
   const handleCheckboxChange = (checked) => {
     const currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    const users = JSON.parse(localStorage.getItem('users')) || [];
     if (currentUser && currentUser.tasks) {
       const updatedTasks = currentUser.tasks.map(t =>
         t.id === task.id ? { ...t, completed: true } : t
@@ -42,6 +43,14 @@ const TaskLine = ({ task, onTaskAdded }) => {
 
       currentUser.tasks = updatedTasks;
       localStorage.setItem('loggedInUser', JSON.stringify(currentUser));
+
+
+      // Find the user in the users array and update their tasks
+      const userIndex = users.findIndex(user => user.id === currentUser.id);
+      if (userIndex !== -1) {
+        users[userIndex].tasks = updatedTasks;
+        localStorage.setItem('users', JSON.stringify(users));
+      }
 
       onTaskAdded();  // This should re-fetch and filter tasks in the parent component
       triggerUpdate();  // FINNALLY global update signal is sent
