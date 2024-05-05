@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 const LevelBar = ({ experiencePoints, onExperienceChange, currentLevel, onLevelChange }) => {
   const experienceToNextLevel = 100 // This could be dynamic or fetched from a settings context
 
   // Trigger level change if experience exceeds the required amount
-  React.useEffect(() => {
+  useEffect(() => {
     if (experiencePoints >= experienceToNextLevel) {
       const excessExperience = experiencePoints - experienceToNextLevel
       onLevelChange(currentLevel + 1)
