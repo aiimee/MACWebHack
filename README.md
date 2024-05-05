@@ -29,9 +29,14 @@ If you encounter any issues or need to clear your local storage, follow these st
 
 ## Demonstration
 
-### VIDEO DEMONSTRATION: https://www.youtube.com/@onimmy
-
 Here, you can include GIFs or screenshots demonstrating each page of the Taskagotchi application. Feel free to add them below:
+
+## Demonstration Video
+
+Check out this demo video of the Taskagotchi application:
+
+[![Taskagotchi Demo]](https://www.youtube.com/@onimmy)
+
 ### Homepage
 ![Homepage GIF](./taskagotchi/src/assets/gif/Homepage.gif)
 
