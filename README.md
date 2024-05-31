@@ -27,10 +27,6 @@ If you encounter any issues or need to clear your local storage, follow these st
 3. Expand the "Local Storage" section
 4. Find the entry for "taskagotchi" and delete it
 
-## Demonstration
-
-Here, you can include GIFs or screenshots demonstrating each page of the Taskagotchi application. Feel free to add them below:
-
 ## Demonstration Video
 
 Check out this demo video of the Taskagotchi application (https://www.youtube.com/watch?v=Mq4Cu2I46VU):
